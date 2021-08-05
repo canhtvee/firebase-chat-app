@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/conversationFragment">
+
+    <fragment
+        android:id="@+id/conversationFragment"
+        android:name="com.canhtv.ee.firebasechatapp.home.ConversationFragment"
+        android:label="fragment_conversation"
+        tools:layout="@layout/fragment_conversation" />
+    <fragment
+        android:id="@+id/contactFragment"
+        android:name="com.canhtv.ee.firebasechatapp.home.ContactFragment"
+        android:label="fragment_contact"
+        tools:layout="@layout/fragment_contact" />
+</navigation>

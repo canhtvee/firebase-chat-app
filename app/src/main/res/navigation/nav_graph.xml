@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.canhtv.ee.firebasechatapp.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_navigation3"
+            app:destination="@id/nested_graph_login"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.canhtv.ee.firebasechatapp.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <navigation android:id="@+id/nested_graph_home"
+        app:startDestination="@id/contactFragment2">
+        <fragment
+            android:id="@+id/contactFragment2"
+            android:name="com.canhtv.ee.firebasechatapp.home.ContactFragment"
+            android:label="fragment_contact"
+            tools:layout="@layout/fragment_contact" />
+        <fragment
+            android:id="@+id/conversationFragment2"
+            android:name="com.canhtv.ee.firebasechatapp.home.ConversationFragment"
+            android:label="fragment_conversation"
+            tools:layout="@layout/fragment_conversation" />
+    </navigation>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.canhtv.ee.firebasechatapp.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <action
+        android:id="@+id/action_global_chatFragment"
+        app:destination="@id/chatFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    <action
+        android:id="@+id/action_global_profileFragment"
+        app:destination="@id/profileFragment"
+        app:enterAnim="@anim/nav_default_enter_anim"
+        app:exitAnim="@anim/nav_default_exit_anim"
+        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+        app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+
+    <navigation android:id="@+id/nested_graph_login"
+
+        app:startDestination="@id/registerFragment">
+        <fragment
+            android:id="@+id/registerFragment"
+            android:name="com.canhtv.ee.firebasechatapp.profile.RegisterFragment"
+            android:label="fragment_register"
+            tools:layout="@layout/fragment_register">
+            <action
+                android:id="@+id/action_registerFragment_to_loginFragment2"
+                app:destination="@id/loginFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/loginFragment"
+            android:name="com.canhtv.ee.firebasechatapp.profile.LoginFragment"
+            android:label="fragment_login"
+            tools:layout="@layout/fragment_login">
+            <action
+                android:id="@+id/action_loginFragment_to_registerFragment"
+                app:destination="@id/registerFragment" />
+        </fragment>
+        <action
+            android:id="@+id/action_global_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </navigation>
+</navigation>
