@@ -6,9 +6,15 @@
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.23025641025641025" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/drawable/ic_call.xml" value="0.23025641025641025" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/drawable/ic_expand_item_view.xml" value="0.23385416666666667" />
+        <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/drawable/ic_fullscreen.xml" value="0.23385416666666667" />
+        <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/drawable/ic_image_loading.xml" value="0.22314814814814815" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.23025641025641025" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/drawable/ic_video_call.xml" value="0.23025641025641025" />
+        <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/drawable/ic_voice_call.xml" value="0.23385416666666667" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/layout/activity_main.xml" value="0.21770833333333334" />
+        <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/layout/conversation_item_view.xml" value="0.21770833333333334" />
+        <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/layout/conversation_item_view_collapse.xml" value="0.21770833333333334" />
+        <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/layout/conversation_item_view_expand.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/layout/fragment_chat.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/layout/fragment_contact.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/layout/fragment_conversation.xml" value="0.21770833333333334" />
@@ -20,6 +26,7 @@
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/layout/item_view.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/layout/item_view_expand.xml" value="0.19" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/menu/conversation_action.xml" value="0.21770833333333334" />
+        <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/menu/menu_conversation_action.xml" value="0.21770833333333334" />
       </map>
     </option>
   </component>
