@@ -7,14 +7,15 @@
     android:orientation="horizontal"
     android:padding="8dp"
     android:visibility="visible">
-    
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/conversation_iv_avatar_image_view"
+        style="@style/Theme.AvatarImageView"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/Theme.AvatarImageView"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/conversation_iv_text_view"

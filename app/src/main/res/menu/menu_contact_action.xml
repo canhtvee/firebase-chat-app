@@ -2,18 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/ic_voice_call_conversation"
+        android:id="@+id/ic_voice_call_contact"
         android:icon="@drawable/ic_voice_call"
         android:title="@string/ic_voice_call"
         app:showAsAction="ifRoom"/>
     <item
-        android:id="@+id/ic_video_call_conversation"
+        android:id="@+id/ic_video_call_contact"
         android:icon="@drawable/ic_video_call"
         android:title="@string/ic_video_call"
-        app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/ic_full_screen_conversation"
-        android:icon="@drawable/ic_fullscreen"
-        android:title="@string/ic_fullscreen"
         app:showAsAction="ifRoom"/>
 </menu>

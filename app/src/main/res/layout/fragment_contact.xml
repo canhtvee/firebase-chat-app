@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".home.ContactFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/contact_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/fragment_contact" />
+        />
 
 </FrameLayout>
