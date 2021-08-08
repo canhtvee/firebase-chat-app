@@ -28,7 +28,7 @@ class  ConversationRecyclerViewAdapter(
         val expandToolbar: MaterialToolbar = view.findViewById(R.id.conversation_ivx_toolbar)
 
         init {
-            itemView.setOnClickListener {
+            collapseView.setOnClickListener {
                 onItemClicked(absoluteAdapterPosition)
             }
 

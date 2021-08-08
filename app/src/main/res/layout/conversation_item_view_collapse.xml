@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp"
+    android:paddingStart="8dp"
+    android:paddingEnd="0dp"
     android:visibility="visible">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/conversation_iv_avatar_image_view"
         style="@style/Theme.AvatarImageView"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,7 +21,7 @@
     <TextView
         android:id="@+id/conversation_iv_text_view"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:padding="8dp"
         android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent"
@@ -33,7 +34,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_expand_item_view"
-        app:layout_constraintTop_toTopOf="@+id/conversation_iv_text_view"
+        android:backgroundTint="?attr/colorOnPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/conversation_iv_text_view"
         app:layout_constraintEnd_toEndOf="@+id/conversation_iv_text_view"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,27 +3,27 @@
     android:id="@+id/conversation_iv_expand"
     android:layout_width="match_parent"
     android:layout_height="250dp"
-    android:padding="8dp"
+    android:paddingStart="8dp"
+    android:paddingEnd="0dp"
     android:visibility="gone"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/conversation_ivx_avatar_image_view"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/trial"
         style="@style/Theme.AvatarImageView"/>
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/conversation_ivx_toolbar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        app:layout_constraintStart_toEndOf="@+id/conversation_ivx_avatar_image_view"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/menu_conversation_action"
-        android:background="@color/trial"
         />
 
     <TextView
@@ -34,7 +34,6 @@
         android:gravity="center_vertical"
         app:layout_constraintTop_toBottomOf="@+id/conversation_ivx_avatar_image_view"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@color/trial"
         />
 
     <androidx.appcompat.widget.AppCompatImageButton
@@ -42,6 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_collapse_item_view"
+        android:backgroundTint="?attr/colorOnPrimary"
         app:layout_constraintEnd_toEndOf="@+id/conversation_ivx_text_view"
         app:layout_constraintBottom_toBottomOf="@+id/conversation_ivx_text_view"
         />
