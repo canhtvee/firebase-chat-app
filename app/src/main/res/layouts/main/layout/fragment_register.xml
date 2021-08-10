@@ -52,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:hint="@string/hint_password"
+        app:endIconMode="password_toggle"
         style="@style/Theme.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -68,6 +69,7 @@
         android:layout_margin="8dp"
         android:hint="@string/hint_confirm_password"
         app:errorEnabled="true"
+        app:endIconMode="password_toggle"
         style="@style/Theme.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText

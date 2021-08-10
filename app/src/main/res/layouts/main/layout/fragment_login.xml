@@ -53,6 +53,7 @@
         android:layout_margin="8dp"
         android:hint="@string/hint_password"
         app:errorEnabled="true"
+        app:endIconMode="password_toggle"
         style="@style/Theme.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
