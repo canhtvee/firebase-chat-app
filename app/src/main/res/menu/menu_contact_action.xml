@@ -11,4 +11,12 @@
         android:icon="@drawable/ic_video_call"
         android:title="@string/ic_video_call"
         app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/act_edit_contact"
+        android:title="@string/act_edit_contact"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/act_share_contact"
+        android:title="@string/act_share_contact"
+        app:showAsAction="never"/>
 </menu>

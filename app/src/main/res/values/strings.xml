@@ -6,6 +6,8 @@
     <string name="ic_voice_call">Voice Call</string>
     <string name="ic_video_call">Video Call</string>
     <string name="ic_fullscreen">Full Screen</string>
+    <string name="act_share_contact">Share Contact</string>
+    <string name="act_edit_contact">Edit Contact</string>
 
     <string name="fragment_profile">Profile Fragment</string>
     <string name="fragment_chat">Chat Fragment</string>
