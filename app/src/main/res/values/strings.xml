@@ -18,5 +18,14 @@
     <string name="fragment_contact">Contact Fragment</string>
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
+    
+    <string name="login_button">Login</string>
+    <string name="register_button">Register</string>
+    <string name="or_register">or Register?</string>
+    <string name="forgot_password">Fogot Password?</string>
+    <string name="login_with_google">Login with Google</string>
+    <string name="do_not_have_account">Don\'t have an account?</string>
+    <string name="register">Register</string>
+    <string name="hint_confirm_password">Confirm Password</string>
 
 </resources>
