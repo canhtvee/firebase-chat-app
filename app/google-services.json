@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "747962089159",
+    "project_id": "fir-chatapp-b7f79",
+    "storage_bucket": "fir-chatapp-b7f79.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747962089159:android:c75d68eb4388de4f0048e2",
+        "android_client_info": {
+          "package_name": "com.canhtv.ee.firebasechatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747962089159-4ohj0h6vqgi8g917m26cfi8fm0o3tid8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjB24JBhPA6J8mZIkkbmxZUWg2aJtDeIc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747962089159-4ohj0h6vqgi8g917m26cfi8fm0o3tid8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

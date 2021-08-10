@@ -16,5 +16,7 @@
     <string name="fragment_home">Home Fragment</string>
     <string name="fragment_conversation">Conversation Fragment</string>
     <string name="fragment_contact">Contact Fragment</string>
+    <string name="hint_username">Username</string>
+    <string name="hint_password">Password</string>
 
 </resources>
