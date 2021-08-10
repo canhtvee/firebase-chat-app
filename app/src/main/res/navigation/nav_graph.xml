@@ -59,7 +59,7 @@
         app:popExitAnim="@anim/nav_default_pop_exit_anim" />
 
     <navigation android:id="@+id/nested_graph_login"
-        app:startDestination="@id/registerFragment">
+        app:startDestination="@id/loginFragment">
         <fragment
             android:id="@+id/registerFragment"
             android:name="com.canhtv.ee.firebasechatapp.profile.RegisterFragment"

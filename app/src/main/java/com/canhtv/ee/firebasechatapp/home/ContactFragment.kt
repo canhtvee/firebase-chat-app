@@ -37,6 +37,6 @@ class ContactFragment : Fragment(R.layout.fragment_contact) {
 
     private fun onItemClick() {
         val mainNavController = Navigation.findNavController(this.requireActivity(), R.id.nav_host_fragment_container)
-        mainNavController.navigate(R.id.action_global_chatFragment)
+        mainNavController.navigate(R.id.action_homeFragment_to_navigation3)
     }
 }
