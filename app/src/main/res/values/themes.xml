@@ -35,7 +35,12 @@
     </style>
 
     <style name="Theme.Toolbar" parent="Widget.MaterialComponents.Toolbar">
-        <item name="actionOverflowButtonStyle">?attr/colorPrimary</item>
+        <item name="actionOverflowButtonStyle">@drawable/ic_overflow_action</item>
+        <item name="titleTextAppearance">@style/Theme.ContactName</item>
+    </style>
+
+    <style name="Theme.ContactName" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>

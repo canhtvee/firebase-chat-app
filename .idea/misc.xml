@@ -32,18 +32,24 @@
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/menu/conversation_action.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/menu/menu_contact_action.xml" value="0.21770833333333334" />
         <entry key="..\:/Users/Canh/AndroidStudioProjects/FirebaseChatApp/app/src/main/res/menu/menu_conversation_action.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.27760416666666665" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/drawable/ic_collapse_item_view.xml" value="0.27760416666666665" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/drawable/ic_expand_item_view.xml" value="0.27760416666666665" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/drawable/ic_fullscreen.xml" value="0.27760416666666665" />
+        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.27760416666666665" />
+        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/drawable/ic_overflow_action.xml" value="0.27760416666666665" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/drawable/ic_video_call.xml" value="0.27760416666666665" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/drawable/ic_voice_call.xml" value="0.27760416666666665" />
-        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/contact_item_view.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/contact_item_view.xml" value="0.33" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/conversation_item_view.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/conversation_item_view_collapse.xml" value="0.67" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/conversation_item_view_expand.xml" value="0.22" />
-        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_login.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_contact.xml" value="0.2164855072463768" />
+        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_profile.xml" value="0.19972826086956522" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_register.xml" value="0.25" />
+        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
         <entry key="..\:/Users/JGC/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/contact_item_view.xml" value="0.2" />
         <entry key="..\:/Users/JGC/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/activity_main.xml" value="0.19927536231884058" />
         <entry key="..\:/Users/JGC/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_login.xml" value="0.25" />

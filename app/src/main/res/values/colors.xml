@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="trial">#CCC6D5</color>
+    <color name="ic_launcher_background">#5c5cdc</color>
 </resources>

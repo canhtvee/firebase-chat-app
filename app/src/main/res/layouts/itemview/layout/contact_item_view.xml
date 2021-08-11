@@ -19,6 +19,7 @@
         android:layout_weight="1"
         android:layout_height="40dp"
         android:layout_gravity="center_vertical"
+        app:srcCompat="@drawable/ic_overflow_action"
         app:menu="@menu/menu_contact_action"
         style="@style/Theme.Toolbar"
         />
