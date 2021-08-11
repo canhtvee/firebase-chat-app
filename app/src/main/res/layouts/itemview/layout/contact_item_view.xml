@@ -20,6 +20,7 @@
         android:layout_height="40dp"
         android:layout_gravity="center_vertical"
         app:menu="@menu/menu_contact_action"
+        style="@style/Theme.Toolbar"
         />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

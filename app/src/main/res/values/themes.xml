@@ -21,10 +21,10 @@
 
     <style name="Theme.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
         <item name="cornerFamily">rounded</item>
-        <item name="boxCornerRadiusTopStart">30dp</item>
-        <item name="boxCornerRadiusTopEnd">30dp</item>
-        <item name="boxCornerRadiusBottomStart">30dp</item>
-        <item name="boxCornerRadiusBottomEnd">30dp</item>
+        <item name="boxCornerRadiusTopStart">5dp</item>
+        <item name="boxCornerRadiusTopEnd">5dp</item>
+        <item name="boxCornerRadiusBottomStart">5dp</item>
+        <item name="boxCornerRadiusBottomEnd">5dp</item>
     </style>
 
     <style name="Theme.Button" parent="Widget.MaterialComponents.Button">
@@ -34,5 +34,8 @@
         <item name="textAllCaps">false</item>
     </style>
 
+    <style name="Theme.Toolbar" parent="Widget.MaterialComponents.Toolbar">
+        <item name="actionOverflowButtonStyle">?attr/colorPrimary</item>
+    </style>
 
 </resources>
