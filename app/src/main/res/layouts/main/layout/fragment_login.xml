@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:padding="24dp"
     android:paddingTop="16dp"
-    tools:context=".profile.LoginFragment">
+    tools:context=".ui.profile.LoginFragment">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="64dp"

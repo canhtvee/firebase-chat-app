@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.canhtv.ee.firebasechatapp.HomeFragment"
+        android:name="com.canhtv.ee.firebasechatapp.ui.HomeFragment"
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_navigation3"
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.canhtv.ee.firebasechatapp.profile.ProfileFragment"
+        android:name="com.canhtv.ee.firebasechatapp.ui.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 
@@ -28,19 +28,19 @@
         app:startDestination="@id/contactFragment2">
         <fragment
             android:id="@+id/contactFragment2"
-            android:name="com.canhtv.ee.firebasechatapp.home.ContactFragment"
+            android:name="com.canhtv.ee.firebasechatapp.ui.home.ContactFragment"
             android:label="fragment_contact"
             tools:layout="@layout/fragment_contact" />
         <fragment
             android:id="@+id/conversationFragment2"
-            android:name="com.canhtv.ee.firebasechatapp.home.ConversationFragment"
+            android:name="com.canhtv.ee.firebasechatapp.ui.home.ConversationFragment"
             android:label="fragment_conversation"
             tools:layout="@layout/fragment_conversation" />
     </navigation>
 
     <fragment
         android:id="@+id/chatFragment"
-        android:name="com.canhtv.ee.firebasechatapp.ChatFragment"
+        android:name="com.canhtv.ee.firebasechatapp.ui.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <action
@@ -62,7 +62,7 @@
         app:startDestination="@id/loginFragment">
         <fragment
             android:id="@+id/registerFragment"
-            android:name="com.canhtv.ee.firebasechatapp.profile.RegisterFragment"
+            android:name="com.canhtv.ee.firebasechatapp.ui.profile.RegisterFragment"
             android:label="fragment_register"
             tools:layout="@layout/fragment_register">
             <action
@@ -75,7 +75,7 @@
         </fragment>
         <fragment
             android:id="@+id/loginFragment"
-            android:name="com.canhtv.ee.firebasechatapp.profile.LoginFragment"
+            android:name="com.canhtv.ee.firebasechatapp.ui.profile.LoginFragment"
             android:label="fragment_login"
             tools:layout="@layout/fragment_login">
             <action

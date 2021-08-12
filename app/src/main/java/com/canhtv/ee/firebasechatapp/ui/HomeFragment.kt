@@ -1,13 +1,16 @@
-package com.canhtv.ee.firebasechatapp
+package com.canhtv.ee.firebasechatapp.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.viewpager2.widget.ViewPager2
+import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.adapters.HomeFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
