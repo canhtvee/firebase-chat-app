@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.*
 
 abstract class BaseRepository {
 
-    fun performGetOperation(
+    fun checkCredential(
         getDataFromRemoteSource: suspend () -> Resource<FirebaseUser>,
         saveDataToDatabase: suspend (FirebaseUser) -> Unit,
         getDataFromLocalSource: () -> LiveData<User>
