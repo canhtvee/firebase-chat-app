@@ -1,4 +1,4 @@
-package com.canhtv.ee.firebasechatapp.data.model
+package com.canhtv.ee.firebasechatapp.data.models
 
 data class User (
     val username    : String? ,

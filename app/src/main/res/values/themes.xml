@@ -31,6 +31,8 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerRadius">30dp</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:elevation">2dp</item>
+        <item name="elevation">2dp</item>
         <item name="textAllCaps">false</item>
     </style>
 

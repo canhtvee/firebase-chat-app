@@ -1,14 +1,12 @@
 package com.canhtv.ee.firebasechatapp.adapters
 
 import android.view.*
-import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.canhtv.ee.firebasechatapp.R
-import com.canhtv.ee.firebasechatapp.data.model.User
+import com.canhtv.ee.firebasechatapp.data.models.User
 import com.google.android.material.appbar.MaterialToolbar
 
 class  ConversationRecyclerViewAdapter(

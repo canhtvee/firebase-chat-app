@@ -44,9 +44,10 @@
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/conversation_item_view.xml" value="0.2210144927536232" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/conversation_item_view_collapse.xml" value="0.67" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/conversation_item_view_expand.xml" value="0.22" />
+        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_contact.xml" value="0.2164855072463768" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_login.xml" value="0.22" />
-        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_profile.xml" value="0.19972826086956522" />
+        <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_profile.xml" value="0.1" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_register.xml" value="0.25" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/DELL/StudioProjects/firebase-chat-app/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
@@ -60,7 +61,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

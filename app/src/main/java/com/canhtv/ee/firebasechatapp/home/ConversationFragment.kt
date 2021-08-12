@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.adapters.ConversationRecyclerViewAdapter
-import com.canhtv.ee.firebasechatapp.data.model.User
+import com.canhtv.ee.firebasechatapp.data.models.User
 
 class ConversationFragment : Fragment(R.layout.fragment_conversation) {
 
