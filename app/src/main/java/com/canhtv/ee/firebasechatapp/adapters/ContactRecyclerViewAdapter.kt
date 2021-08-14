@@ -1,6 +1,7 @@
 package com.canhtv.ee.firebasechatapp.adapters
 
 import android.view.*
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.User
@@ -19,6 +20,7 @@ class  ContactRecyclerViewAdapter(
                 onItemClicked(absoluteAdapterPosition)
             }
 
+            toolbar.overflowIcon = AppCompatResources.getDrawable(toolbar.context,R.drawable.ic_overflow_action)
             toolbar.setOnMenuItemClickListener { menu ->
 
                 when (menu.itemId) {

@@ -19,12 +19,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/conversation_iv_text_view"
+        android:id="@+id/conversation_iv_contact_name_text"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:padding="8dp"
         android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/conversation_iv_avatar_image_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Theme.ContactName"
+        />
+
+    <TextView
+        android:id="@+id/conversation_iv_message_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@+id/conversation_iv_contact_name_text"
         app:layout_constraintStart_toEndOf="@+id/conversation_iv_avatar_image_view"
         app:layout_constraintEnd_toEndOf="parent"
         />
@@ -35,8 +47,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_expand_item_view"
         android:backgroundTint="?attr/colorOnPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/conversation_iv_text_view"
-        app:layout_constraintEnd_toEndOf="@+id/conversation_iv_text_view"/>
+        app:layout_constraintBottom_toBottomOf="@+id/conversation_iv_message_text"
+        app:layout_constraintEnd_toEndOf="@+id/conversation_iv_message_text"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -17,11 +17,11 @@ class  ConversationRecyclerViewAdapter(
     class ViewHolder(view: View, onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(view) {
 
         val collapseView: ConstraintLayout = view.findViewById(R.id.conversation_iv_collapse)
-        val collapseTextView: TextView = view.findViewById(R.id.conversation_iv_text_view)
+        val collapseTextView: TextView = view.findViewById(R.id.conversation_iv_message_text)
         val collapseBtn: AppCompatImageButton = view.findViewById(R.id.conversation_iv_button)
 
         val expandView: ConstraintLayout = view.findViewById(R.id.conversation_iv_expand)
-        val expandTextView: TextView = view.findViewById(R.id.conversation_ivx_text_view)
+        val expandTextView: TextView = view.findViewById(R.id.conversation_ivx_message_text)
         val expandBtn: AppCompatImageButton = view.findViewById(R.id.conversation_ivx_button)
         val expandToolbar: MaterialToolbar = view.findViewById(R.id.conversation_ivx_toolbar)
 
