@@ -24,10 +24,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/menu_conversation_action"
+        style="@style/Theme.Toolbar"
         />
 
     <TextView
-        android:id="@+id/conversation_ivx_text_view"
+        android:id="@+id/conversation_ivx_message_text"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:padding="8dp"
@@ -42,8 +43,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_collapse_item_view"
         android:backgroundTint="?attr/colorOnPrimary"
-        app:layout_constraintEnd_toEndOf="@+id/conversation_ivx_text_view"
-        app:layout_constraintBottom_toBottomOf="@+id/conversation_ivx_text_view"
+        app:layout_constraintEnd_toEndOf="@+id/conversation_ivx_message_text"
+        app:layout_constraintBottom_toBottomOf="@+id/conversation_ivx_message_text"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
