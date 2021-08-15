@@ -18,7 +18,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ContactFragment : Fragment(R.layout.fragment_contact) {
 
-    @Inject lateinit var mainNavController: NavController
+    @Inject
+    lateinit var mainNavController: NavController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val users = mutableListOf<User>(User("Name 1", "Image 1", "Message 1"))
@@ -42,7 +43,7 @@ class ContactFragment : Fragment(R.layout.fragment_contact) {
     }
 
     private fun onItemClick() {
-//        val mainNavController = Navigation.findNavController(this.requireActivity(), R.id.nav_host_fragment_container)
-        mainNavController.navigate(R.id.action_homeFragment_to_navigation3)
+        mainNavController.navigate(R.id.action_global_loginFragment)
     }
+
 }

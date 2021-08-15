@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,10 +13,13 @@ import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.adapters.ConversationRecyclerViewAdapter
 import com.canhtv.ee.firebasechatapp.data.models.User
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ConversationFragment : Fragment(R.layout.fragment_conversation) {
 
+    @Inject
+    lateinit var mainNavController: NavController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val users = mutableListOf<User>(User("Name 1", "Image 1", "Message 1"))
@@ -39,7 +43,6 @@ class ConversationFragment : Fragment(R.layout.fragment_conversation) {
     }
 
     private fun onItemClick() {
-        val mainNavController = Navigation.findNavController(this.requireActivity(), R.id.nav_host_fragment_container)
         mainNavController.navigate(R.id.action_global_chatFragment)
     }
 
