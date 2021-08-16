@@ -1,4 +1,6 @@
 package com.canhtv.ee.firebasechatapp.data.repositories
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.liveData
 import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesServices
 import com.canhtv.ee.firebasechatapp.data.models.SessionData
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
@@ -12,7 +14,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 
-class AuthRepository @Inject constructor(
+class SessionRepository @Inject constructor(
     private val firebaseAuthService: FirebaseAuthService,
     private val sharedPreferencesKeys: SharedPreferencesKeys,
     private val sharePreferencesServices: SharePreferencesServices
@@ -29,11 +31,15 @@ class AuthRepository @Inject constructor(
         firebaseService = { firebaseAuthService.createUserWithEmailAndPassword(userCredential) }
     )
 
+    suspend fun getSession(): LiveData<Resource<SessionData>> = liveData {
+        emit(Resource.Success(sharePreferencesServices.getSession()))
+    }
+
     private fun proceedRequest(
         sessionState: Int,
         userCredential: UserCredential,
         firebaseService: suspend () -> Resource<FirebaseUser>
-    ): Flow<Resource<SessionData>> = flow {
+    ): LiveData<Resource<SessionData>> = liveData (Dispatchers.IO) {
 
         emit(Resource.Loading())
 
@@ -45,5 +51,5 @@ class AuthRepository @Inject constructor(
             emit(Resource.Success(sharePreferencesServices.getSession()))
             }
         }
-    }.flowOn(Dispatchers.IO)
+    }
 }

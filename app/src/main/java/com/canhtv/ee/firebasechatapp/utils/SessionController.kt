@@ -13,11 +13,16 @@ class SessionController @Inject constructor(
     private val sessionViewModel: SessionViewModel,
 ){
     fun checkSession() {
-        sessionViewModel.sessionData.observe(activity, {
-            when(it.sessionState) {
-                sharedPreferencesKeys.DEFAULT_STATE -> mainNavController.navigate(R.id.action_global_registerFragment)
-                sharedPreferencesKeys.SESSION_STATE_SIGN_OUT -> mainNavController.navigate(R.id.action_global_loginFragment)
-                sharedPreferencesKeys.SESSION_STATE_SIGN_IN -> mainNavController.navigate(R.id.action_global_homeFragment)
+        sessionViewModel.sessionData.observe(activity, { resource ->
+            when(resource) {
+                is Resource.Success -> {
+                    when(resource.data.sessionState) {
+                        sharedPreferencesKeys.DEFAULT_STATE -> mainNavController.navigate(R.id.action_global_registerFragment)
+                        sharedPreferencesKeys.SESSION_STATE_SIGN_OUT -> mainNavController.navigate(R.id.action_global_loginFragment)
+                        sharedPreferencesKeys.SESSION_STATE_SIGN_IN -> mainNavController.navigate(R.id.action_global_homeFragment)
+                    }
+                }
+                else -> {}
             }
         })
     }
