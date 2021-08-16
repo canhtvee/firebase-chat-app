@@ -31,15 +31,15 @@
         android:textColor="?colorPrimary"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/login_username_text_input"
+        android:id="@+id/login_email_text_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:hint="@string/hint_username"
+        android:hint="@string/hint_email"
         style="@style/Theme.TextInputLayout">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_username_edit_text"
+            android:id="@+id/login_email_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -79,6 +79,9 @@
         android:textSize="14sp"
         android:layout_gravity="center"
         android:layout_marginBottom="100dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         />
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -95,13 +98,16 @@
             android:layout_marginEnd="8dp"
             />
         <TextView
+            android:id="@+id/login_register_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register"
             android:textSize="14sp"
             android:textColor="?attr/colorPrimary"
             android:layout_gravity="center"
-            />
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

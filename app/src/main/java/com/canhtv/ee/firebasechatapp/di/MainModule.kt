@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.canhtv.ee.firebasechatapp.R
+import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesServices
 import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
 import dagger.Module
 import dagger.Provides
@@ -17,15 +18,21 @@ import dagger.hilt.android.components.ActivityComponent
 object MainModule {
 
     @Provides
-    fun provideSharedPreferenceKeys() = SharedPreferencesKeys()
-
-    @Provides
     fun provideMainNavController(activity: FragmentActivity
     ): NavController = activity.findNavController(R.id.nav_host_fragment_container)
 
     @Provides
-    fun provideSharedPreferences(activity: FragmentActivity
-    ): SharedPreferences = activity.getSharedPreferences("Session", Context.MODE_PRIVATE)
+    fun provideSharedPreferenceKeys() = SharedPreferencesKeys()
+
+    @Provides
+    fun provideSharedPreferencesEditor(activity: FragmentActivity
+    ): SharedPreferences.Editor = activity.getSharedPreferences("Session", Context.MODE_PRIVATE)
+        .edit()
+
+    @Provides
+    fun provideSharedPreferencesServices(sharedPreferencesKeys: SharedPreferencesKeys,
+                              sharedPreferences: SharedPreferences,
+    ) = SharePreferencesServices(sharedPreferencesKeys, sharedPreferences)
 
 
 }

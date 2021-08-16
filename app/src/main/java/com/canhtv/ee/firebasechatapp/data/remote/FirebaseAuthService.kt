@@ -1,5 +1,6 @@
 package com.canhtv.ee.firebasechatapp.data.remote
 
+import com.canhtv.ee.firebasechatapp.data.models.UserCredential
 import com.canhtv.ee.firebasechatapp.utils.Resource
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -9,15 +10,15 @@ class FirebaseAuthService @Inject constructor(
     private val auth: FirebaseAuth
     ) : BaseFirebaseService(){
 
-    suspend fun createUserWithEmailAndPassword(email: String, password: String): Resource<FirebaseUser> {
+    suspend fun createUserWithEmailAndPassword(userCredential: UserCredential): Resource<FirebaseUser> {
         return getResult(auth) {
-            auth.createUserWithEmailAndPassword(email, password)
+            auth.createUserWithEmailAndPassword(userCredential.email!!, userCredential.password!!)
                 .addOnCompleteListener{}
         }
     }
-    suspend fun signInWithEmailAndPassword(email: String, password: String): Resource<FirebaseUser> {
+    suspend fun signInWithEmailAndPassword(userCredential: UserCredential): Resource<FirebaseUser> {
         return getResult(auth) {
-            auth.signInWithEmailAndPassword(email, password)
+            auth.signInWithEmailAndPassword(userCredential.email!!, userCredential.password!!)
                 .addOnCompleteListener{}
         }
     }
