@@ -5,13 +5,12 @@ import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.adapters.ContactRecyclerViewAdapter
-import com.canhtv.ee.firebasechatapp.data.models.User
+import com.canhtv.ee.firebasechatapp.data.models.UserData
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -22,9 +21,9 @@ class ContactFragment : Fragment(R.layout.fragment_contact) {
     lateinit var mainNavController: NavController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val users = mutableListOf<User>(User("Name 1", "Image 1", "Message 1"))
+        val users = mutableListOf<UserData>(UserData("Name 1", "Image 1", "Message 1"))
         for (i in 2..10) {
-            val user = User("Name $i", "Image $i", "Message $i")
+            val user = UserData("Name $i", "Image $i", "Message $i")
             users.add(user)
         }
 

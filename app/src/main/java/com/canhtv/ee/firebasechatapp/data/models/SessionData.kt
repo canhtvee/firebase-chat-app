@@ -1,6 +1,6 @@
 package com.canhtv.ee.firebasechatapp.data.models
 
-data class Session(
+data class SessionData(
     var sessionState : Int,
     var credential: UserCredential
 )

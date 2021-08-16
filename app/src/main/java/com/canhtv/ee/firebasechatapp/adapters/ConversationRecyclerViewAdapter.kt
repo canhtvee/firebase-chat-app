@@ -6,12 +6,12 @@ import androidx.appcompat.widget.AppCompatImageButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.canhtv.ee.firebasechatapp.R
-import com.canhtv.ee.firebasechatapp.data.models.User
+import com.canhtv.ee.firebasechatapp.data.models.UserData
 import com.google.android.material.appbar.MaterialToolbar
 
 class  ConversationRecyclerViewAdapter(
-    private val data: MutableList<User>,
-    val onItemClickHandler: (User) -> Unit,
+    private val data: MutableList<UserData>,
+    val onItemClickHandler: (UserData) -> Unit,
 ) : RecyclerView.Adapter<ConversationRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(view: View, onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(view) {

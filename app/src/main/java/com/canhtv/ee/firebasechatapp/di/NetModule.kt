@@ -1,6 +1,7 @@
 package com.canhtv.ee.firebasechatapp.di
 
 import com.canhtv.ee.firebasechatapp.data.remote.FirebaseAuthService
+import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module
 import dagger.Provides
@@ -20,6 +21,5 @@ object NetModule {
     @Singleton
     @Provides
     fun provideFirebaseAuthService(auth: FirebaseAuth): FirebaseAuthService = FirebaseAuthService(auth)
-
 
 }

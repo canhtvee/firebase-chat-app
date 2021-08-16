@@ -9,7 +9,8 @@ data class SharedPreferencesKeys (
     val URL_TO_IMAGE       : String = "urlToImage",
     val SESSION_STATE      : String = "sessionState",
     val DEFAULT_STRING     : String = "Not Registered",
-    val DEFAULT_INT        : Int    = 0,
-    val SESSION_STATE_SIGNIN  : Int = 1,
-    val SESSION_STATE_SIGNOUT : Int = 2,
+    val DEFAULT_STATE        : Int    = 0,
+    val SESSION_STATE_REGISTER  : Int = 1,
+    val SESSION_STATE_SIGN_IN  : Int = 2,
+    val SESSION_STATE_SIGN_OUT : Int = 3,
 )

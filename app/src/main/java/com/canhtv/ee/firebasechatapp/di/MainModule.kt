@@ -2,12 +2,15 @@ package com.canhtv.ee.firebasechatapp.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.core.content.pm.PermissionInfoCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesServices
+import com.canhtv.ee.firebasechatapp.utils.SessionController
 import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
+import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,17 +25,15 @@ object MainModule {
     ): NavController = activity.findNavController(R.id.nav_host_fragment_container)
 
     @Provides
-    fun provideSharedPreferenceKeys() = SharedPreferencesKeys()
+    fun provideSessionViewModel(sharePreferencesServices: SharePreferencesServices
+    ) = SessionViewModel(sharePreferencesServices)
 
     @Provides
-    fun provideSharedPreferencesEditor(activity: FragmentActivity
-    ): SharedPreferences.Editor = activity.getSharedPreferences("Session", Context.MODE_PRIVATE)
-        .edit()
-
-    @Provides
-    fun provideSharedPreferencesServices(sharedPreferencesKeys: SharedPreferencesKeys,
-                              sharedPreferences: SharedPreferences,
-    ) = SharePreferencesServices(sharedPreferencesKeys, sharedPreferences)
-
+    fun provideSessionController(
+        activity: FragmentActivity,
+        sharedPreferencesKeys: SharedPreferencesKeys,
+        mainNavController: NavController,
+        sessionViewModel: SessionViewModel,
+    ) = SessionController(activity, sharedPreferencesKeys, mainNavController, sessionViewModel)
 
 }

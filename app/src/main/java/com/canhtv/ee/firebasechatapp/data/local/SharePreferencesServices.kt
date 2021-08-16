@@ -1,7 +1,7 @@
 package com.canhtv.ee.firebasechatapp.data.local
 
 import android.content.SharedPreferences
-import com.canhtv.ee.firebasechatapp.data.models.Session
+import com.canhtv.ee.firebasechatapp.data.models.SessionData
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
 import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
 import com.google.firebase.auth.FirebaseUser
@@ -12,7 +12,7 @@ class SharePreferencesServices @Inject constructor(
     private val sharedPreferences: SharedPreferences
 ){
 
-    val editor = sharedPreferences.edit()
+    private val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
     fun saveData(state: Int, userCredential: UserCredential, user: FirebaseUser) {
         with(editor) {
@@ -25,11 +25,11 @@ class SharePreferencesServices @Inject constructor(
         }
     }
 
-    fun getSession(): Session {
-        val session = Session(sharedPreferencesKeys.DEFAULT_INT,
+    fun getSession(): SessionData {
+        val session = SessionData(sharedPreferencesKeys.DEFAULT_STATE,
             UserCredential(sharedPreferencesKeys.DEFAULT_STRING, sharedPreferencesKeys.DEFAULT_STRING))
         session.sessionState = sharedPreferences
-            .getInt(sharedPreferencesKeys.SESSION_STATE, sharedPreferencesKeys.DEFAULT_INT)
+            .getInt(sharedPreferencesKeys.SESSION_STATE, sharedPreferencesKeys.DEFAULT_STATE)
         session.credential.email = sharedPreferences
             .getString(sharedPreferencesKeys.EMAIL, sharedPreferencesKeys.DEFAULT_STRING)
         session.credential.password = sharedPreferences
