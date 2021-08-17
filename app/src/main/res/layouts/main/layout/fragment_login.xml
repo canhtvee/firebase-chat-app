@@ -101,7 +101,7 @@
             android:id="@+id/login_register_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/register"
+            android:text="@string/register_button"
             android:textSize="14sp"
             android:textColor="?attr/colorPrimary"
             android:layout_gravity="center"

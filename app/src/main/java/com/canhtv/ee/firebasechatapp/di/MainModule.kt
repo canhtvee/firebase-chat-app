@@ -1,13 +1,10 @@
 package com.canhtv.ee.firebasechatapp.di
 
-import android.content.Context
-import android.content.SharedPreferences
-import androidx.core.content.pm.PermissionInfoCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.canhtv.ee.firebasechatapp.R
-import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesServices
+import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesAccess
 import com.canhtv.ee.firebasechatapp.data.repositories.SessionRepository
 import com.canhtv.ee.firebasechatapp.utils.SessionController
 import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
@@ -31,10 +28,9 @@ object MainModule {
 
     @Provides
     fun provideSessionController(
-        activity: FragmentActivity,
+        sharedPreferencesAccess: SharePreferencesAccess,
         sharedPreferencesKeys: SharedPreferencesKeys,
-        mainNavController: NavController,
-        sessionViewModel: SessionViewModel,
-    ) = SessionController(activity, sharedPreferencesKeys, mainNavController, sessionViewModel)
+        mainNavController: NavController
+    ) = SessionController(sharedPreferencesAccess, sharedPreferencesKeys, mainNavController)
 
 }

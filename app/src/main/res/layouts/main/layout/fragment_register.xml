@@ -1,93 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<FrameLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:clipChildren="false"
-    android:clipToPadding="false"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:paddingTop="16dp"
-    tools:context=".ui.profile.RegisterFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="16dp"
-        style="@style/Theme.AvatarImageView"
-        app:srcCompat="@drawable/ic_app_icon" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="120dp"
-        android:text="@string/app_name"
-        android:textAllCaps="true"
-        android:textSize="18sp"
-        android:textColor="?colorPrimary"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_email_text_input"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/register_layout"
+        android:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="@string/hint_email"
-        style="@style/Theme.TextInputLayout">
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:paddingTop="16dp"
+        tools:context=".ui.profile.RegisterFragment">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/register_email_edit_text"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="16dp"
+            style="@style/Theme.AvatarImageView"
+            app:srcCompat="@drawable/ic_app_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="120dp"
+            android:text="@string/app_name"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:textColor="?colorPrimary"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_email_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:maxLines="1" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_margin="8dp"
+            android:hint="@string/hint_email"
+            style="@style/Theme.TextInputLayout">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_password_text_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="@string/hint_password"
-        app:endIconMode="password_toggle"
-        style="@style/Theme.TextInputLayout">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_email_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:maxLines="1" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/register_password_edit_text"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_password_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_margin="8dp"
+            android:hint="@string/hint_password"
+            app:endIconMode="password_toggle"
+            style="@style/Theme.TextInputLayout">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/register_confirm_password_text_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="@string/hint_confirm_password"
-        app:errorEnabled="true"
-        app:endIconMode="password_toggle"
-        style="@style/Theme.TextInputLayout">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_password_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/register_confirm_password_edit_text"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/register_confirm_password_text_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_margin="8dp"
+            android:hint="@string/hint_confirm_password"
+            app:errorEnabled="true"
+            app:endIconMode="password_toggle"
+            style="@style/Theme.TextInputLayout">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/register_button"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/register_confirm_password_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            android:text="@string/register_button"
+            style="@style/Theme.Button"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/register_layout_successful"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_margin="8dp"
-        android:layout_gravity="center"
-        android:text="@string/register_button"
-        style="@style/Theme.Button"
-        />
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:paddingTop="16dp"
+        tools:context=".ui.profile.RegisterFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="50dp"
+            android:text="@string/register_successful"
+            android:textSize="18sp"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</FrameLayout>
+

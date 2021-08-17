@@ -3,27 +3,21 @@ package com.canhtv.ee.firebasechatapp.utils
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import com.canhtv.ee.firebasechatapp.R
+import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesAccess
 import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
 import javax.inject.Inject
 
 class SessionController @Inject constructor(
-    private val activity: FragmentActivity,
+    private val sharedPreferencesAccess: SharePreferencesAccess,
     private val sharedPreferencesKeys: SharedPreferencesKeys,
-    private val mainNavController: NavController,
-    private val sessionViewModel: SessionViewModel,
+    private val mainNavController: NavController
 ){
     fun checkSession() {
-        sessionViewModel.sessionData.observe(activity, { resource ->
-            when(resource) {
-                is Resource.Success -> {
-                    when(resource.data.sessionState) {
-                        sharedPreferencesKeys.DEFAULT_STATE -> mainNavController.navigate(R.id.action_global_registerFragment)
-                        sharedPreferencesKeys.SESSION_STATE_SIGN_OUT -> mainNavController.navigate(R.id.action_global_loginFragment)
-                        sharedPreferencesKeys.SESSION_STATE_SIGN_IN -> mainNavController.navigate(R.id.action_global_homeFragment)
-                    }
-                }
-                else -> {}
-            }
-        })
+        val session = sharedPreferencesAccess.getUserSession()
+        when (session.sessionState) {
+            sharedPreferencesKeys.DEFAULT_STATE -> mainNavController.navigate(R.id.action_global_registerFragment)
+            sharedPreferencesKeys.SESSION_STATE_SIGN_OUT -> mainNavController.navigate(R.id.action_global_loginFragment)
+            sharedPreferencesKeys.SESSION_STATE_SIGN_IN -> mainNavController.navigate(R.id.action_global_homeFragment)
+        }
     }
 }

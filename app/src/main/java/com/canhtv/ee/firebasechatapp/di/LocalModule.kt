@@ -3,7 +3,7 @@ package com.canhtv.ee.firebasechatapp.di
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.fragment.app.FragmentActivity
-import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesServices
+import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesAccess
 import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
 import dagger.Module
 import dagger.Provides
@@ -29,7 +29,7 @@ object LocalModule {
     @Provides
     fun provideSharedPreferencesServices(sharedPreferencesKeys: SharedPreferencesKeys,
                                          sharedPreferences: SharedPreferences,
-    ) = SharePreferencesServices(sharedPreferencesKeys, sharedPreferences)
+    ) = SharePreferencesAccess(sharedPreferencesKeys, sharedPreferences)
 
 
 }
