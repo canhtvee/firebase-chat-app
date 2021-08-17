@@ -2,6 +2,7 @@ package com.canhtv.ee.firebasechatapp.di
 
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesAccess
@@ -20,7 +21,7 @@ object MainModule {
 
     @Provides
     fun provideMainNavController(activity: FragmentActivity
-    ): NavController = activity.findNavController(R.id.nav_host_fragment_container)
+    ): NavController = Navigation.findNavController(activity, R.id.nav_host_fragment_container)
 
     @Provides
     fun provideSessionViewModel(sessionRepository: SessionRepository

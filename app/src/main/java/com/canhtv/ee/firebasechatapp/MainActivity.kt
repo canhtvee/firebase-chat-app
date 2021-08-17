@@ -11,13 +11,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : FragmentActivity() {
-
-    @Inject
-    lateinit var sessionController: SessionController
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        sessionController.checkSession()
     }
 }

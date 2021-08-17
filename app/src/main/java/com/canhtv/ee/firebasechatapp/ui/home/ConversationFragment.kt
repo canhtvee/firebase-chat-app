@@ -42,7 +42,7 @@ class ConversationFragment : Fragment(R.layout.fragment_conversation) {
     }
 
     private fun onItemClick() {
-        mainNavController.navigate(R.id.action_global_chatFragment)
+        mainNavController.navigate(R.id.action_global_loginFragment)
     }
 
 }

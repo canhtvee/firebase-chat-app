@@ -3,12 +3,15 @@ package com.canhtv.ee.firebasechatapp.ui
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.navigation.NavController
 import androidx.viewpager2.widget.ViewPager2
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.adapters.HomeFragmentAdapter
+import com.canhtv.ee.firebasechatapp.utils.SessionController
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -23,5 +26,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = title[position]
         }.attach()
+
     }
 }

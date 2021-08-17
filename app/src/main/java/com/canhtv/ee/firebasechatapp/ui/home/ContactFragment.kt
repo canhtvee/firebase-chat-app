@@ -42,7 +42,7 @@ class ContactFragment : Fragment(R.layout.fragment_contact) {
     }
 
     private fun onItemClick() {
-        mainNavController.navigate(R.id.action_global_loginFragment)
+        mainNavController.navigate(R.id.action_global_registerFragment)
     }
 
 }
