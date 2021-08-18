@@ -24,11 +24,11 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
-    @Inject
-    lateinit var sessionViewModel: SessionViewModel
-
-    @Inject
-    lateinit var sessionController: SessionController
+//    @Inject
+//    lateinit var sessionViewModel: SessionViewModel
+//
+//    @Inject
+//    lateinit var sessionController: SessionController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val layout = view.findViewById<LinearLayoutCompat>(R.id.register_layout)
@@ -41,28 +41,36 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         val confirmPassword = view.findViewById<TextInputEditText>(R.id.register_confirm_password_edit_text)
         val btn = view.findViewById<MaterialButton>(R.id.register_button)
 
-        val mainNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container)
+//        val mainNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container)
+
+        val auth = FirebaseAuth.getInstance()
 
         btn.setOnClickListener {
             if (TextUtils.isEmpty(email.text) or (TextUtils.isEmpty(password.text)) or (password.text.toString() != confirmPassword.text.toString())) {
                 Toast.makeText(context, "Check Credential", Toast.LENGTH_SHORT).show()
             } else {
-                //sessionViewModel.applyRegisterSession(UserCredential(email.text.toString(), password.text.toString()))
-
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
-                    .addOnSuccessListener { task ->
-                        Log.d("Auth TAG", task.toString())
+                val _email = email.text.toString().trim()
+                val _password = password.text.toString().trim()
+                auth.createUserWithEmailAndPassword(_email, _password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                            val email = user?.email.toString()
+                            val id = user?.uid.toString()
+                            val other = user?.isEmailVerified.toString()
+                            Toast.makeText(context, email + id + other, Toast.LENGTH_LONG).show()
+                        }
                     }
             }
         }
 
-        sessionViewModel.session.observe(viewLifecycleOwner, { resources ->
-            when (resources) {
-                is Resource.Success -> {
-                    sessionController.checkSession(resources.data, mainNavController )
-                }
-                else -> {}
-            }
-        })
+//        sessionViewModel.session.observe(viewLifecycleOwner, { resources ->
+//            when (resources) {
+//                is Resource.Success -> {
+//                    sessionController.checkSession(resources.data, mainNavController )
+//                }
+//                else -> {}
+//            }
+//        })
     }
 }

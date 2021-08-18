@@ -15,6 +15,7 @@ import com.canhtv.ee.firebasechatapp.utils.SessionController
 import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -35,23 +36,40 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         val mainNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container)
 
+        val auth = FirebaseAuth.getInstance()
+
+
         btn.setOnClickListener {
             if (TextUtils.isEmpty(email.text) or (TextUtils.isEmpty(password.text))) {
                 Toast.makeText(context, "Check Credential", Toast.LENGTH_SHORT).show()
             } else {
-                sessionViewModel.applySignInSession(UserCredential(email.text.toString(), password.text.toString()))
+//                sessionViewModel.applySignInSession(UserCredential(email.text.toString(), password.text.toString()))
+
+                val _email = email.text.toString().trim()
+                val _password = password.text.toString().trim()
+                auth.signInWithEmailAndPassword(_email, _password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            val user = auth.currentUser
+                            val email = user?.email.toString()
+                            val id = user?.uid.toString()
+                            val other = user?.isEmailVerified.toString()
+                            Toast.makeText(context, email + id + other, Toast.LENGTH_LONG).show()
+                        }
+                    }
+
             }
         }
 
-        sessionViewModel.session.observe(viewLifecycleOwner, { resources ->
-            when (resources) {
-                is Resource.Success -> {
-                    sessionController.checkSession(resources.data, mainNavController)
-                }
-                else -> {
-                }
-            }
-        })
+//        sessionViewModel.session.observe(viewLifecycleOwner, { resources ->
+//            when (resources) {
+//                is Resource.Success -> {
+//                    sessionController.checkSession(resources.data, mainNavController)
+//                }
+//                else -> {
+//                }
+//            }
+//        })
 
         register.setOnClickListener {
             mainNavController.navigate(R.id.action_global_registerFragment)
