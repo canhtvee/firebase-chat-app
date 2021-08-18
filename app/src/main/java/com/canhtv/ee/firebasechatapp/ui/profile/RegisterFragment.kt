@@ -8,9 +8,11 @@ import android.widget.Toast
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
 import com.canhtv.ee.firebasechatapp.utils.Resource
+import com.canhtv.ee.firebasechatapp.utils.SessionController
 import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -20,11 +22,11 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
-//    @Inject
-//    lateinit var sessionViewModel: SessionViewModel
+    @Inject
+    lateinit var sessionViewModel: SessionViewModel
 
     @Inject
-    lateinit var mainNavController: NavController
+    lateinit var sessionController: SessionController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val layout = view.findViewById<LinearLayoutCompat>(R.id.register_layout)
@@ -37,23 +39,23 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         val confirmPassword = view.findViewById<TextInputEditText>(R.id.register_confirm_password_edit_text)
         val btn = view.findViewById<MaterialButton>(R.id.register_button)
 
+        val mainNavController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container)
+
         btn.setOnClickListener {
-            if (TextUtils.isEmpty(email.text) or (TextUtils.isEmpty(password.text)) or (password.text != confirmPassword.text)) {
+            if (TextUtils.isEmpty(email.text) or (TextUtils.isEmpty(password.text)) or (password.text.toString() != confirmPassword.text.toString())) {
                 Toast.makeText(context, "Check Credential", Toast.LENGTH_SHORT).show()
             } else {
-//                sessionViewModel.applyRegisterSession(UserCredential(email.text.toString(), password.text.toString()))
+                sessionViewModel.applyRegisterSession(UserCredential(email.text.toString(), password.text.toString()))
             }
         }
 
-//        sessionViewModel.session.observe(viewLifecycleOwner, { resources ->
-//            when (resources) {
-//                is Resource.Success -> {
-//                    layout.visibility = View.GONE
-//                    layoutSuccessful.visibility = View.VISIBLE
-//                    mainNavController.navigate(R.id.action_global_homeFragment)
-//                }
-//                else -> {}
-//            }
-//        })
+        sessionViewModel.session.observe(viewLifecycleOwner, { resources ->
+            when (resources) {
+                is Resource.Success -> {
+                    sessionController.checkSession(resources.data, mainNavController )
+                }
+                else -> {}
+            }
+        })
     }
 }

@@ -14,11 +14,11 @@ class SessionViewModel @Inject constructor(
 
     lateinit var session: LiveData<Resource<UserSession>>
 
-//    init {
-//        viewModelScope.launch {
-//            session = sessionRepository.getSession()
-//        }
-//    }
+    init {
+        viewModelScope.launch {
+            session = sessionRepository.getSession()
+        }
+    }
 
     fun applySignInSession(userCredential: UserCredential) {
         viewModelScope.launch { session = sessionRepository.applySignInSession(userCredential) }
