@@ -2,6 +2,7 @@ package com.canhtv.ee.firebasechatapp.ui.profile
 
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.canhtv.ee.firebasechatapp.utils.SessionController
 import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -45,7 +47,12 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             if (TextUtils.isEmpty(email.text) or (TextUtils.isEmpty(password.text)) or (password.text.toString() != confirmPassword.text.toString())) {
                 Toast.makeText(context, "Check Credential", Toast.LENGTH_SHORT).show()
             } else {
-                sessionViewModel.applyRegisterSession(UserCredential(email.text.toString(), password.text.toString()))
+                //sessionViewModel.applyRegisterSession(UserCredential(email.text.toString(), password.text.toString()))
+
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
+                    .addOnSuccessListener { task ->
+                        Log.d("Auth TAG", task.toString())
+                    }
             }
         }
 
