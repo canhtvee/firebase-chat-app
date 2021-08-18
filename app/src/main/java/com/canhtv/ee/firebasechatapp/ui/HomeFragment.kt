@@ -1,5 +1,6 @@
 package com.canhtv.ee.firebasechatapp.ui
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
@@ -7,6 +8,7 @@ import androidx.navigation.NavController
 import androidx.viewpager2.widget.ViewPager2
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.adapters.HomeFragmentAdapter
+import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesAccess
 import com.canhtv.ee.firebasechatapp.utils.SessionController
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator

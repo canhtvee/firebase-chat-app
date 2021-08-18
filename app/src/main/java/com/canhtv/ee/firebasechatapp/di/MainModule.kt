@@ -19,9 +19,10 @@ import dagger.hilt.android.components.ActivityComponent
 @InstallIn(ActivityComponent::class)
 object MainModule {
 
+    // Call this function in the fragment that is a direct child of the NavHost with result in crash
     @Provides
     fun provideMainNavController(activity: FragmentActivity
-    ): NavController = Navigation.findNavController(activity, R.id.nav_host_fragment_container)
+    ): NavController = activity.findNavController(R.id.nav_host_fragment_container)
 
     @Provides
     fun provideSessionViewModel(sessionRepository: SessionRepository
@@ -29,9 +30,7 @@ object MainModule {
 
     @Provides
     fun provideSessionController(
-        sharedPreferencesAccess: SharePreferencesAccess,
         sharedPreferencesKeys: SharedPreferencesKeys,
-        mainNavController: NavController
-    ) = SessionController(sharedPreferencesAccess, sharedPreferencesKeys, mainNavController)
+    ) = SessionController(sharedPreferencesKeys)
 
 }

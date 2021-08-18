@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "747962089159",
-    "project_id": "fir-chatapp-b7f79",
-    "storage_bucket": "fir-chatapp-b7f79.appspot.com"
+    "project_number": "131076353088",
+    "project_id": "x230-240e4",
+    "storage_bucket": "x230-240e4.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:747962089159:android:c75d68eb4388de4f0048e2",
+        "mobilesdk_app_id": "1:131076353088:android:0b0723a0f594386c4283a5",
         "android_client_info": {
           "package_name": "com.canhtv.ee.firebasechatapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "747962089159-4ohj0h6vqgi8g917m26cfi8fm0o3tid8.apps.googleusercontent.com",
+          "client_id": "131076353088-ueb8nbelqrqj84mb3s1di84lctt5ae14.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.canhtv.ee.firebasechatapp",
+            "certificate_hash": "f1086d42bc7d9650e347db04f4044cbe49eebc76"
+          }
+        },
+        {
+          "client_id": "131076353088-3h4equ2g5gtmvjedko5j5g8p842m6do6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAjB24JBhPA6J8mZIkkbmxZUWg2aJtDeIc"
+          "current_key": "AIzaSyBE7C5CNg0Cf_lkXTrYJaPGiOh7sRGnCR0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "747962089159-4ohj0h6vqgi8g917m26cfi8fm0o3tid8.apps.googleusercontent.com",
+              "client_id": "131076353088-3h4equ2g5gtmvjedko5j5g8p842m6do6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
