@@ -1,5 +1,6 @@
 package com.canhtv.ee.firebasechatapp.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
 import com.canhtv.ee.firebasechatapp.data.models.UserSession
@@ -12,19 +13,20 @@ class SessionViewModel @Inject constructor(
     private val sessionRepository: SessionRepository
 ): ViewModel() {
 
-    lateinit var session: LiveData<Resource<UserSession>>
+//    lateinit var session: LiveData<Resource<UserSession>>
 
-    init {
-        viewModelScope.launch {
-            session = sessionRepository.getSession()
-        }
-    }
+//    init {
+//        viewModelScope.launch {
+//            session = sessionRepository.getSession()
+//        }
+//    }
+//
+//    fun applySignInSession(userCredential: UserCredential) {
+//        Log.d("TAG SessionViewModel", "call applySignInSession")
+//        viewModelScope.launch { session = sessionRepository.applySignInSession(userCredential) }
+//    }
 
-    fun applySignInSession(userCredential: UserCredential) {
-        viewModelScope.launch { session = sessionRepository.applySignInSession(userCredential) }
-    }
-
-    fun applyRegisterSession(userCredential: UserCredential) {
-        viewModelScope.launch { session = sessionRepository.applyRegisterSession(userCredential) }
-    }
+//    fun applyRegisterSession(userCredential: UserCredential) {
+//        viewModelScope.launch { session = sessionRepository.applyRegisterSession(userCredential) }
+//    }
 }

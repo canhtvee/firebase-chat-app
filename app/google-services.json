@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "660382551722",
+    "project_id": "fir-chatapp-b13a5",
+    "storage_bucket": "fir-chatapp-b13a5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660382551722:android:c84b2d41a64e510037cad3",
+        "android_client_info": {
+          "package_name": "com.canhtv.ee.firebasechatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660382551722-iab2o0pdk9ghgl7m8fsqjtp9abgpk0at.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.canhtv.ee.firebasechatapp",
+            "certificate_hash": "3fe275049f52f91ee056c21731c29731096860ad"
+          }
+        },
+        {
+          "client_id": "660382551722-rbtgkrdteub182lbb6mf3fstfatqre6q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.canhtv.ee.firebasechatapp",
+            "certificate_hash": "f1086d42bc7d9650e347db04f4044cbe49eebc76"
+          }
+        },
+        {
+          "client_id": "660382551722-uc4g1at7ap81p9aint77a5cjgdjiuvse.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9zXpYmjCRO6ovuoZDom9K_O_W2GDs9Hg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660382551722-uc4g1at7ap81p9aint77a5cjgdjiuvse.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

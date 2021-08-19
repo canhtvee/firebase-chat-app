@@ -1,4 +1,5 @@
 package com.canhtv.ee.firebasechatapp.data.repositories
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesAccess
@@ -13,19 +14,18 @@ import javax.inject.Inject
 
 class SessionRepository @Inject constructor(
     private val firebaseAuthService: FirebaseAuthService,
-    private val sharedPreferencesKeys: SharedPreferencesKeys,
-    private val sharePreferencesAccess: SharePreferencesAccess
+    private val sharedPrefAccess: SharePreferencesAccess
 ){
     suspend fun applySignInSession(userCredential: UserCredential) = applySession(
-        sharedPreferencesKeys.SESSION_STATE_SIGN_IN, userCredential
+        sharedPrefAccess.keys.SESSION_STATE_SIGN_IN, userCredential
     ) { firebaseAuthService.signInWithEmailAndPassword(userCredential) }
 
     suspend fun applyRegisterSession(userCredential: UserCredential) = applySession(
-        sharedPreferencesKeys.SESSION_STATE_SIGN_IN, userCredential
+        sharedPrefAccess.keys.SESSION_STATE_SIGN_IN, userCredential
     ) { firebaseAuthService.createUserWithEmailAndPassword(userCredential) }
 
     suspend fun getSession(): LiveData<Resource<UserSession>> = liveData {
-        emit(Resource.Success(sharePreferencesAccess.getUserSession()))
+        emit(Resource.Success(sharedPrefAccess.getUserSession()))
     }
 
     private fun applySession(
@@ -36,10 +36,10 @@ class SessionRepository @Inject constructor(
         emit(Resource.Loading())
         when (val result = authRequest.invoke()) {
             is Resource.Success -> {
-                sharePreferencesAccess.putSessionData(sessionState, userCredential, result.data )
-                emit(Resource.Success(sharePreferencesAccess.getUserSession()))
+                sharedPrefAccess.putSessionData(sessionState, userCredential, result.data )
+                emit(Resource.Success(sharedPrefAccess.getUserSession()))
             } else -> {
-            emit(Resource.Success(sharePreferencesAccess.getUserSession()))
+            emit(Resource.Success(sharedPrefAccess.getUserSession()))
             }
         }
     }

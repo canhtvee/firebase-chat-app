@@ -24,8 +24,8 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
-//    @Inject
-//    lateinit var sessionViewModel: SessionViewModel
+    @Inject
+    lateinit var sessionViewModel: SessionViewModel
 //
 //    @Inject
 //    lateinit var sessionController: SessionController
@@ -55,10 +55,10 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             val user = auth.currentUser
-                            val email = user?.email.toString()
+                            val uemail = user?.email.toString()
                             val id = user?.uid.toString()
                             val other = user?.isEmailVerified.toString()
-                            Toast.makeText(context, email + id + other, Toast.LENGTH_LONG).show()
+                            Toast.makeText(context, uemail + id + other, Toast.LENGTH_LONG).show()
                         }
                     }
             }
