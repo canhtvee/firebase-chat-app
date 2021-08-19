@@ -12,6 +12,7 @@ abstract class BaseFirebaseService {
         auth: FirebaseAuth,
         call: suspend () -> Task<AuthResult>
     ): Resource<FirebaseUser> {
+        Log.d("TAG CALL", "BaseFirebaseService: call getResult")
         var resource: Resource<FirebaseUser> = Resource.Loading()
         try {
             val authTask = call()
@@ -21,10 +22,12 @@ abstract class BaseFirebaseService {
                 } else {
                     Resource.Error(task.exception.toString())
                 }
+                Log.d("TAG RESULT", " UserId: ${auth.currentUser!!.uid}")
             }
         } catch (e: Exception) {
             resource = error(e.message ?: e.toString())
         }
+        Log.d("TAG CALL RESULT", resource.toString())
         return resource
     }
 

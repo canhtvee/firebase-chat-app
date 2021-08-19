@@ -9,6 +9,10 @@ plugins {
 android {
     compileSdk 30
 
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "com.canhtv.ee.firebasechatapp"
         minSdk 21

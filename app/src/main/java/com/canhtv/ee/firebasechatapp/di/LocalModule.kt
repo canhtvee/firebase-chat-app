@@ -27,9 +27,8 @@ object LocalModule {
     ): SharedPreferences.Editor = sharedPreferences.edit()
 
     @Provides
-    fun provideSharedPreferencesServices(sharedPreferencesKeys: SharedPreferencesKeys,
-                                         sharedPreferences: SharedPreferences,
-    ) = SharePreferencesAccess(sharedPreferencesKeys, sharedPreferences)
-
+    fun provideSharedPreferencesAccess(sharedPreferences: SharedPreferences,
+                                       sharedPreferencesKeys: SharedPreferencesKeys
+    ) = SharePreferencesAccess(sharedPreferences, sharedPreferencesKeys)
 
 }

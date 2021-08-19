@@ -27,8 +27,9 @@ object MainModule {
 
     @Provides
     fun provideSessionRepository(firebaseAuthService: FirebaseAuthService,
+                                 sharedPreferencesKeys: SharedPreferencesKeys,
                                  sharePreferencesAccess: SharePreferencesAccess
-    ) = SessionRepository(firebaseAuthService, sharePreferencesAccess)
+    ) = SessionRepository(firebaseAuthService, sharedPreferencesKeys, sharePreferencesAccess)
 
     @Provides
     fun provideSessionViewModel(sessionRepository: SessionRepository
@@ -37,6 +38,7 @@ object MainModule {
     @Provides
     fun provideSessionController(
         sharedPreferencesKeys: SharedPreferencesKeys,
-    ) = SessionController(sharedPreferencesKeys)
+        mainNavController: NavController
+    ) = SessionController(sharedPreferencesKeys, mainNavController)
 
 }
