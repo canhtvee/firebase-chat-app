@@ -17,17 +17,21 @@ class SessionViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            session = sessionRepository.getSession()
+            session = sessionRepository.getSession().asLiveData()
         }
     }
 
     fun applySignInSession(userCredential: UserCredential) {
         Log.d("TAG CALL", "SessionViewModel: call applySignInSession")
         viewModelScope.launch {
-            session = sessionRepository.applySignInSession(userCredential) }
+            sessionRepository.getNameFlow()
+            session = sessionRepository.applySignInSession(userCredential).asLiveData()
+        }
     }
 
     fun applyRegisterSession(userCredential: UserCredential) {
-        viewModelScope.launch { session = sessionRepository.applyRegisterSession(userCredential) }
+        viewModelScope.launch {
+            session = sessionRepository.applyRegisterSession(userCredential).asLiveData()
+        }
     }
 }

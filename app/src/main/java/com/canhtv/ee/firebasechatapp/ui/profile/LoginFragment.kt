@@ -12,10 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
-import com.canhtv.ee.firebasechatapp.data.remote.FirebaseAuthService
 import com.canhtv.ee.firebasechatapp.data.repositories.SessionRepository
 import com.canhtv.ee.firebasechatapp.databinding.FragmentLoginBinding
-import com.canhtv.ee.firebasechatapp.utils.Resource
 import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -24,14 +22,14 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
 
-//    @Inject
-//    lateinit var sessionViewModel: SessionViewModel
-
-//    @Inject
-//    lateinit var sessionRepository: SessionRepository
+    @Inject
+    lateinit var sessionViewModel: SessionViewModel
 
     @Inject
-    lateinit var firebaseAuthService: FirebaseAuthService
+    lateinit var sessionRepository: SessionRepository
+
+//    @Inject
+//    lateinit var firebaseAuthService: FirebaseAuthService
 
     private var _binding: FragmentLoginBinding? = null
 
@@ -51,7 +49,8 @@ class LoginFragment : Fragment() {
         val password = binding.loginPasswordEditText
 
         binding.loginRegisterText.setOnClickListener {
-            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container).navigate(R.id.action_global_registerFragment)
+            Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container)
+                .navigate(R.id.action_global_registerFragment)
         }
 
         binding.loginButton.setOnClickListener {
@@ -59,19 +58,34 @@ class LoginFragment : Fragment() {
             if (TextUtils.isEmpty(email.text) or (TextUtils.isEmpty(password.text))) {
                 Toast.makeText(context, "Check Credential", Toast.LENGTH_SHORT).show()
             } else {
-                val user = UserCredential(email.text.toString().trim(), password.text.toString().trim())
-//                sessionViewModel.applySignInSession(user)
+                val user =
+                    UserCredential(email.text.toString().trim(), password.text.toString().trim())
+                Log.d("TAG CALL", "LoginFragment: Start SignInSession")
+                sessionViewModel.applySignInSession(user)
+
+
+
+
 
                 lifecycleScope.launch {
                     Log.d("TAG CALL", "Launch Login Session")
-//                    sessionRepository.applySignInSession(user)
+                    sessionRepository.getNameFlow()
 
-                    firebaseAuthService.signInWithEmailAndPassword(user)
 
                 }
-
             }
         }
+    }
+
+
+
+
+
+
+
+
+
+
 
 //        sessionViewModel.session.observe(viewLifecycleOwner) { resources ->
 //            when (resources) {
@@ -86,7 +100,9 @@ class LoginFragment : Fragment() {
 //                }
 //            }
 //        }
-    }
+//    }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

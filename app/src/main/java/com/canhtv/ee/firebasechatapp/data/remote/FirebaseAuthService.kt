@@ -12,12 +12,12 @@ class FirebaseAuthService @Inject constructor(
     ) : BaseFirebaseService(){
 
     suspend fun createUserWithEmailAndPassword(userCredential: UserCredential): Resource<FirebaseUser> {
-        return getResult(auth
-        ) { auth.createUserWithEmailAndPassword(userCredential.email!!, userCredential.password!!) }
+        return getResult(auth)
+        { auth.createUserWithEmailAndPassword(userCredential.email!!, userCredential.password!!) }
     }
 
     suspend fun signInWithEmailAndPassword(userCredential: UserCredential): Resource<FirebaseUser> {
-        return getResult(auth
-        ) { auth.signInWithEmailAndPassword(userCredential.email!!, userCredential.password!!) }
+        return getResult(auth)
+        { auth.signInWithEmailAndPassword(userCredential.email!!, userCredential.password!!) }
     }
 }
