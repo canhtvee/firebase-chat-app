@@ -22,7 +22,7 @@ abstract class BaseFirebaseService {
                 } else {
                     Resource.Error(task.exception.toString())
                 }
-                Log.d("TAG RESULT", " UserId: ${auth.currentUser!!.uid}")
+                Log.d("TAG RESULT", " getResult UserId: ${auth.currentUser!!.uid}")
             }
         } catch (e: Exception) {
             resource = error(e.message ?: e.toString())

@@ -8,15 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
-import com.canhtv.ee.firebasechatapp.data.repositories.SessionRepository
 import com.canhtv.ee.firebasechatapp.databinding.FragmentLoginBinding
+import com.canhtv.ee.firebasechatapp.utils.Resource
 import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -24,12 +22,6 @@ class LoginFragment : Fragment() {
 
     @Inject
     lateinit var sessionViewModel: SessionViewModel
-
-    @Inject
-    lateinit var sessionRepository: SessionRepository
-
-//    @Inject
-//    lateinit var firebaseAuthService: FirebaseAuthService
 
     private var _binding: FragmentLoginBinding? = null
 
@@ -53,6 +45,28 @@ class LoginFragment : Fragment() {
                 .navigate(R.id.action_global_registerFragment)
         }
 
+        sessionViewModel.trial.observe(viewLifecycleOwner) { resources ->
+            when (resources) {
+                is Resource.Success -> {
+                    Toast.makeText(context, resources.data.toString(), Toast.LENGTH_LONG).show()
+                    Log.d("RESULT", resources.data.toString())
+                }
+                is Resource.Loading -> {
+                    Toast.makeText(context, "Loading", Toast.LENGTH_LONG).show()
+                    Log.d("RESULT", "Loading")
+
+                }
+                is Resource.Error -> {
+                    Toast.makeText(context, resources.message, Toast.LENGTH_LONG).show()
+                    Log.d("RESULT", "Error")
+
+                }
+            }
+        }
+
+
+
+
         binding.loginButton.setOnClickListener {
 
             if (TextUtils.isEmpty(email.text) or (TextUtils.isEmpty(password.text))) {
@@ -63,44 +77,12 @@ class LoginFragment : Fragment() {
                 Log.d("TAG CALL", "LoginFragment: Start SignInSession")
                 sessionViewModel.applySignInSession(user)
 
-
-
-
-
-                lifecycleScope.launch {
-                    Log.d("TAG CALL", "Launch Login Session")
-                    sessionRepository.getNameFlow()
-
-
-                }
             }
         }
+
     }
 
 
-
-
-
-
-
-
-
-
-
-//        sessionViewModel.session.observe(viewLifecycleOwner) { resources ->
-//            when (resources) {
-//                is Resource.Success -> {
-//                    Toast.makeText(context, resources.data.toString(), Toast.LENGTH_LONG).show()
-//                }
-//                is Resource.Loading -> {
-//                    Toast.makeText(context, "Loading", Toast.LENGTH_LONG).show()
-//                }
-//                is Resource.Error -> {
-//                    Toast.makeText(context, resources.message, Toast.LENGTH_LONG).show()
-//                }
-//            }
-//        }
-//    }
 
 
 

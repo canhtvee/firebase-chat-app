@@ -6,6 +6,8 @@ import com.canhtv.ee.firebasechatapp.data.models.UserCredential
 import com.canhtv.ee.firebasechatapp.data.models.UserSession
 import com.canhtv.ee.firebasechatapp.data.repositories.SessionRepository
 import com.canhtv.ee.firebasechatapp.utils.Resource
+import com.google.firebase.auth.FirebaseUser
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -14,6 +16,9 @@ class SessionViewModel @Inject constructor(
 ): ViewModel() {
 
     lateinit var session: LiveData<Resource<UserSession>>
+
+    val _trial = MutableLiveData<Resource<UserSession>>()
+    val trial: LiveData<Resource<UserSession>> = _trial
 
     init {
         viewModelScope.launch {
@@ -24,8 +29,10 @@ class SessionViewModel @Inject constructor(
     fun applySignInSession(userCredential: UserCredential) {
         Log.d("TAG CALL", "SessionViewModel: call applySignInSession")
         viewModelScope.launch {
-            sessionRepository.getNameFlow()
-            session = sessionRepository.applySignInSession(userCredential).asLiveData()
+            sessionRepository.applySignInSession(userCredential).collect{
+                _trial.value = it
+            }
+//            session = sessionRepository.applySignInSession(userCredential).asLiveData()
         }
     }
 
