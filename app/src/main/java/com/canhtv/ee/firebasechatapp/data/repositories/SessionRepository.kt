@@ -8,6 +8,8 @@ import com.canhtv.ee.firebasechatapp.data.models.UserCredential
 import com.canhtv.ee.firebasechatapp.data.remote.FirebaseAuthService
 import com.canhtv.ee.firebasechatapp.utils.Resource
 import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -47,11 +49,14 @@ class SessionRepository @Inject constructor(
         Log.d("TAG CALL", "SessionRepository: call applySession")
         when (val result = authRequest.invoke()) {
             is Resource.Success -> {
+                Log.d("TAG CALL", "SessionRepository: call applySession authRequest successful")
                 sharedPrefAccess.putSessionData(sessionState, userCredential, result.data )
                 emit(Resource.Success(sharedPrefAccess.getUserSession()))
             } else -> {
-//            emit(Resource.Success(sharedPrefAccess.getUserSession()))
+            emit(Resource.Success(sharedPrefAccess.getUserSession()))
             }
         }
+        emit(Resource.Success(sharedPrefAccess.getUserSession()))
+
     }.flowOn(Dispatchers.IO)
 }

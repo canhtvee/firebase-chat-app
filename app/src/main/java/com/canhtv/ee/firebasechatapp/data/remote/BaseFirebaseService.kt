@@ -13,22 +13,16 @@ abstract class BaseFirebaseService {
         call: suspend () -> Task<AuthResult>
     ): Resource<FirebaseUser> {
         Log.d("TAG CALL", "BaseFirebaseService: call getResult")
-        var resource: Resource<FirebaseUser> = Resource.Loading()
-        try {
+        return try {
             val authTask = call()
-            authTask.addOnCompleteListener { task ->
-                resource = if (task.isSuccessful) {
-                    Resource.Success(auth.currentUser!!)
-                } else {
-                    Resource.Error(task.exception.toString())
-                }
-                Log.d("TAG RESULT", " getResult UserId: ${auth.currentUser!!.uid}")
+            if (authTask.isSuccessful) {
+                Resource.Success(auth.currentUser!!)
+            } else {
+                Resource.Error(authTask.exception.toString())
             }
         } catch (e: Exception) {
-            resource = error(e.message ?: e.toString())
+            error(e.message ?: e.toString())
         }
-        Log.d("TAG CALL RESULT", resource.toString())
-        return resource
     }
 
     private fun <T> error(message: String): Resource<T> {

@@ -15,7 +15,7 @@ class SessionViewModel @Inject constructor(
     private val sessionRepository: SessionRepository
 ): ViewModel() {
 
-    val _trial = MutableLiveData<Resource<UserSession>>()
+    private val _trial = MutableLiveData<Resource<UserSession>>()
     val trial: LiveData<Resource<UserSession>> = _trial
 
     fun applySignInSession(userCredential: UserCredential) {
