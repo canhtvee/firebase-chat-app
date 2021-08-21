@@ -19,10 +19,29 @@ class FirebaseAuthService @Inject constructor(
     }
 
     suspend fun signInWithEmailAndPassword(userCredential: UserCredential): Resource<FirebaseUser> {
+
+        tryGetResult(userCredential)
         return getResult(auth)
         { auth.signInWithEmailAndPassword(userCredential.email!!, userCredential.password!!) }
     }
 
     fun getFirebaseUser() = auth.currentUser
 
+
+    private fun tryGetResult(
+        userCredential: UserCredential
+    ): Resource<FirebaseUser> {
+        Log.d("TAG CALL", " call tryGetResult")
+        try {
+            val result = auth.signInWithEmailAndPassword(userCredential.email!!, userCredential.password!!).result
+            Log.d("CALL", "tryGetResult ${result?.user.toString()}")
+
+            return Resource.Loading<FirebaseUser>()
+        } catch (e: Exception) {
+            e.toString()
+            return Resource.Error(e.message ?: e.toString())
+        }
+    }
+
 }
+

@@ -56,7 +56,5 @@ class SessionRepository @Inject constructor(
             emit(Resource.Success(sharedPrefAccess.getUserSession()))
             }
         }
-        emit(Resource.Success(sharedPrefAccess.getUserSession()))
-
     }.flowOn(Dispatchers.IO)
 }

@@ -1,6 +1,8 @@
 package com.canhtv.ee.firebasechatapp.data.remote
 import android.util.Log
+import androidx.compose.runtime.saveable.autoSaver
 import com.canhtv.ee.firebasechatapp.utils.Resource
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -13,15 +15,27 @@ abstract class BaseFirebaseService {
         call: suspend () -> Task<AuthResult>
     ): Resource<FirebaseUser> {
         Log.d("TAG CALL", "BaseFirebaseService: call getResult")
-        return try {
-            val authTask = call()
-            if (authTask.isSuccessful) {
-                Resource.Success(auth.currentUser!!)
-            } else {
-                Resource.Error(authTask.exception.toString())
+        try {
+            val authTask = call.invoke()
+//            if (authTask.isSuccessful) {
+//                return Resource.Success(auth.currentUser!!)
+//                Log.d("RESULT", "call getResult successful uid = ${auth.currentUser!!.uid}")
+//            } else {
+//                return Resource.Error(authTask.exception.toString())
+//            }
+
+            authTask.addOnCompleteListener {
+                if (it.isSuccessful) {
+                    Resource.Success(auth.currentUser!!)
+                    Log.d("RESULT", "call getResult successful uid = ${auth.currentUser!!.uid}")
+                } else {
+                }
             }
+
+
+            return Resource.Loading<FirebaseUser>()
         } catch (e: Exception) {
-            error(e.message ?: e.toString())
+            return error(e.message ?: e.toString())
         }
     }
 
