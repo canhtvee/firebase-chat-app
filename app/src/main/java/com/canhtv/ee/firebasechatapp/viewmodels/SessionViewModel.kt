@@ -15,30 +15,24 @@ class SessionViewModel @Inject constructor(
     private val sessionRepository: SessionRepository
 ): ViewModel() {
 
-    lateinit var session: LiveData<Resource<UserSession>>
-
     val _trial = MutableLiveData<Resource<UserSession>>()
     val trial: LiveData<Resource<UserSession>> = _trial
-
-    init {
-        viewModelScope.launch {
-            session = sessionRepository.getSession().asLiveData()
-        }
-    }
 
     fun applySignInSession(userCredential: UserCredential) {
         Log.d("TAG CALL", "SessionViewModel: call applySignInSession")
         viewModelScope.launch {
-            sessionRepository.applySignInSession(userCredential).collect{
-                _trial.value = it
-            }
-//            session = sessionRepository.applySignInSession(userCredential).asLiveData()
+           sessionRepository.applySignInSession(userCredential).collect {
+               _trial.value = it
+           }
         }
     }
 
+
     fun applyRegisterSession(userCredential: UserCredential) {
         viewModelScope.launch {
-            session = sessionRepository.applyRegisterSession(userCredential).asLiveData()
+            sessionRepository.applyRegisterSession(userCredential).collect {
+                _trial.value = it
+            }
         }
     }
 }

@@ -11,10 +11,7 @@ import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.emitAll
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 class SessionRepository @Inject constructor(
@@ -27,10 +24,12 @@ class SessionRepository @Inject constructor(
     )= applySession(sharedPrefKeys.STATE_SIGN_IN, userCredential)
     { firebaseAuthService.createUserWithEmailAndPassword(userCredential) }
 
-    suspend fun applySignInSession(userCredential: UserCredential): Flow<Resource<UserSession>> {
+    suspend fun applySignInSession(userCredential: UserCredential
+    ): Flow<Resource<UserSession>> {
         Log.d("TAG CALL", "SessionRepository: call applySignInSession")
-        return applySession(sharedPrefKeys.STATE_SIGN_IN, userCredential)
-        { firebaseAuthService.signInWithEmailAndPassword(userCredential) }
+        return applySession(sharedPrefKeys.STATE_SIGN_IN, userCredential) {
+            firebaseAuthService.signInWithEmailAndPassword(userCredential)
+        }
     }
 
     fun getSession(): Flow<Resource<UserSession>> = flow {
@@ -39,22 +38,19 @@ class SessionRepository @Inject constructor(
     }.flowOn(Dispatchers.IO)
 
 
-
     private suspend fun applySession(
         sessionState: Int,
         userCredential: UserCredential,
         authRequest: suspend () -> Resource<FirebaseUser>
     ): Flow<Resource<UserSession>> = flow {
-        Log.d("TAG CALL", "SessionRepository: call applySession")
-
         emit(Resource.Loading())
-
+        Log.d("TAG CALL", "SessionRepository: call applySession")
         when (val result = authRequest.invoke()) {
             is Resource.Success -> {
                 sharedPrefAccess.putSessionData(sessionState, userCredential, result.data )
                 emit(Resource.Success(sharedPrefAccess.getUserSession()))
             } else -> {
-            emit(Resource.Success(sharedPrefAccess.getUserSession()))
+//            emit(Resource.Success(sharedPrefAccess.getUserSession()))
             }
         }
     }.flowOn(Dispatchers.IO)

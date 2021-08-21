@@ -65,21 +65,18 @@ class LoginFragment : Fragment() {
         }
 
 
-
-
         binding.loginButton.setOnClickListener {
 
             if (TextUtils.isEmpty(email.text) or (TextUtils.isEmpty(password.text))) {
                 Toast.makeText(context, "Check Credential", Toast.LENGTH_SHORT).show()
             } else {
-                val user =
-                    UserCredential(email.text.toString().trim(), password.text.toString().trim())
+                val user = UserCredential(email.text.toString().trim(), password.text.toString().trim())
                 Log.d("TAG CALL", "LoginFragment: Start SignInSession")
                 sessionViewModel.applySignInSession(user)
 
+
             }
         }
-
     }
 
 
