@@ -7,6 +7,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlinx.coroutines.tasks.await
 
 abstract class BaseFirebaseService {
 
@@ -15,27 +16,16 @@ abstract class BaseFirebaseService {
         call: suspend () -> Task<AuthResult>
     ): Resource<FirebaseUser> {
         Log.d("TAG CALL", "BaseFirebaseService: call getResult")
-        try {
-            val authTask = call.invoke()
-//            if (authTask.isSuccessful) {
-//                return Resource.Success(auth.currentUser!!)
-//                Log.d("RESULT", "call getResult successful uid = ${auth.currentUser!!.uid}")
-//            } else {
-//                return Resource.Error(authTask.exception.toString())
-//            }
-
-            authTask.addOnCompleteListener {
-                if (it.isSuccessful) {
-                    Resource.Success(auth.currentUser!!)
-                    Log.d("RESULT", "call getResult successful uid = ${auth.currentUser!!.uid}")
-                } else {
-                }
+        return try {
+            val task = call.invoke()
+            // Not executing next commands during waiting task was completed
+            task.await()
+            Log.d("RESULT", "call getResult successful uid = ${auth.currentUser}")
+            if (auth.currentUser != null) {Resource.Success(auth.currentUser!!)} else {
+                Resource.Error("${task.exception}")
             }
-
-
-            return Resource.Loading<FirebaseUser>()
         } catch (e: Exception) {
-            return error(e.message ?: e.toString())
+            error(e.message ?: e.toString())
         }
     }
 
