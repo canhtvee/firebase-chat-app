@@ -3,7 +3,9 @@ package com.canhtv.ee.firebasechatapp.ui.profile
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.widget.LinearLayoutCompat
@@ -12,6 +14,8 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
+import com.canhtv.ee.firebasechatapp.databinding.FragmentLoginBinding
+import com.canhtv.ee.firebasechatapp.databinding.FragmentRegisterBinding
 import com.canhtv.ee.firebasechatapp.utils.Resource
 import com.canhtv.ee.firebasechatapp.utils.SessionController
 import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
@@ -26,9 +30,19 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     @Inject
     lateinit var sessionViewModel: SessionViewModel
-//
-//    @Inject
-//    lateinit var sessionController: SessionController
+
+    private var _binding: FragmentRegisterBinding? = null
+
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val layout = view.findViewById<LinearLayoutCompat>(R.id.register_layout)
