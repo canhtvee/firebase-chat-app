@@ -4,8 +4,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9804249e3fc372dca0d5f24ee585dadd/transformed/jetified-hilt-android-2.37/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e4287b7daa577de063109cc567f4d7ea/transformed/jetified-hilt-android-2.37/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f591b68fa5130914445f38719b3fb49b/transformed/jetified-hilt-android-2.37/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f591b68fa5130914445f38719b3fb49b/transformed/jetified-hilt-android-2.37/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f591b68fa5130914445f38719b3fb49b/transformed/jetified-hilt-android-2.37/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/101560e3bb479b821fe848425b3b5334/transformed/jetified-hilt-android-2.37/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/101560e3bb479b821fe848425b3b5334/transformed/jetified-hilt-android-2.37/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/101560e3bb479b821fe848425b3b5334/transformed/jetified-hilt-android-2.37/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.dagger/hilt-android/2.37/9462e156cd8e695d768108ce6c62033163c05629/hilt-android-2.37-javadoc.jar!/" />
