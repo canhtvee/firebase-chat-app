@@ -21,7 +21,5 @@ class FirebaseAuthService @Inject constructor(
         { auth.signInWithEmailAndPassword(userCredential.email!!, userCredential.password!!) }
     }
 
-    fun getFirebaseUser() = auth.currentUser
-
 }
 

@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
 import com.canhtv.ee.firebasechatapp.databinding.FragmentRegisterBinding
@@ -21,10 +22,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class RegisterFragment : Fragment(R.layout.fragment_register) {
+class RegisterFragment : Fragment() {
 
     @Inject
     lateinit var sessionViewModel: SessionViewModel
+
+    @Inject
+    lateinit var mainNavController: NavController
 
     private var _binding: FragmentRegisterBinding? = null
 
@@ -54,6 +58,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
                         binding.registerLayout.visibility = View.GONE
                         binding.registerLayoutSuccessful.visibility = View.VISIBLE
                         delay(500)
+                        mainNavController.navigate(R.id.action_global_homeFragment)
                     }
                 }
                 is Resource.Loading -> {

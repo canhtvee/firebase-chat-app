@@ -49,16 +49,13 @@ class LoginFragment : Fragment() {
             when (resources) {
                 is Resource.Success -> {
                     Toast.makeText(context, resources.data.toString(), Toast.LENGTH_LONG).show()
-                    Log.d("RESULT", resources.data.toString())
                 }
                 is Resource.Loading -> {
                     Toast.makeText(context, "Loading", Toast.LENGTH_LONG).show()
-                    Log.d("RESULT", "Loading")
 
                 }
                 is Resource.Error -> {
                     Toast.makeText(context, resources.message, Toast.LENGTH_LONG).show()
-                    Log.d("RESULT", "Error")
 
                 }
             }
@@ -71,7 +68,6 @@ class LoginFragment : Fragment() {
                 Toast.makeText(context, "Check Credential", Toast.LENGTH_SHORT).show()
             } else {
                 val user = UserCredential(email.text.toString().trim(), password.text.toString().trim())
-                Log.d("TAG CALL", "LoginFragment: Start SignInSession")
                 sessionViewModel.applySignInSession(user)
 
 

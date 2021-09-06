@@ -15,12 +15,10 @@ abstract class BaseFirebaseService {
         auth: FirebaseAuth,
         call: suspend () -> Task<AuthResult>
     ): Resource<FirebaseUser> {
-        Log.d("TAG CALL", "BaseFirebaseService: call getResult")
         return try {
             val task = call.invoke()
             // Not executing next commands during waiting task was completed
             task.await()
-            Log.d("RESULT", "call getResult successful uid = ${auth.currentUser}")
             if (auth.currentUser != null) {Resource.Success(auth.currentUser!!)} else {
                 Resource.Error("${task.exception}")
             }
