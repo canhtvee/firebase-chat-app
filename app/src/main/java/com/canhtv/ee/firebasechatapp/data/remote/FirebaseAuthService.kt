@@ -4,9 +4,7 @@ import android.util.Log
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
 import com.canhtv.ee.firebasechatapp.utils.Resource
 import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.AuthResult
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.*
 import javax.inject.Inject
 
 class FirebaseAuthService @Inject constructor(

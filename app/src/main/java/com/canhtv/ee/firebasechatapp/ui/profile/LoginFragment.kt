@@ -45,7 +45,7 @@ class LoginFragment : Fragment() {
                 .navigate(R.id.action_global_registerFragment)
         }
 
-        sessionViewModel.trial.observe(viewLifecycleOwner) { resources ->
+        sessionViewModel.session.observe(viewLifecycleOwner) { resources ->
             when (resources) {
                 is Resource.Success -> {
                     Toast.makeText(context, resources.data.toString(), Toast.LENGTH_LONG).show()
@@ -78,9 +78,6 @@ class LoginFragment : Fragment() {
             }
         }
     }
-
-
-
 
 
     override fun onDestroyView() {

@@ -12,16 +12,11 @@ class SharePreferencesAccess @Inject constructor(
     private val sharedPreferences: SharedPreferences,
     private val sharedPrefKeys: SharedPreferencesKeys
 ){
-
-    private val editor: SharedPreferences.Editor = sharedPreferences.edit()
-
-    fun putSessionData(sessionState: Int, userCredential: UserCredential, user: FirebaseUser) {
-        with(editor) {
-            putInt(sharedPrefKeys.SESSION_STATE, sessionState )
-            putString(sharedPrefKeys.EMAIL, user.email)
-            putString(sharedPrefKeys.USER_NAME, user.displayName)
-            putString(sharedPrefKeys.PASSWORD, userCredential.password!!)
-            putString(sharedPrefKeys.URL_TO_IMAGE, user.photoUrl.toString())
+    fun putUserSession(userSession: UserSession) {
+        with(sharedPreferences.edit()) {
+            putInt(sharedPrefKeys.SESSION_STATE, userSession.sessionState )
+            putString(sharedPrefKeys.EMAIL, userSession.credential.email)
+            putString(sharedPrefKeys.PASSWORD, userSession.credential.password!!)
             apply()
         }
     }
@@ -30,7 +25,6 @@ class SharePreferencesAccess @Inject constructor(
         val sessionState = getInt(sharedPrefKeys.SESSION_STATE)
         val email = getString(sharedPrefKeys.EMAIL)
         val password = getString(sharedPrefKeys.PASSWORD)
-        Log.d("TAG SharedPrefAccess", "UserCredential $sessionState $email $password")
         return UserSession(sessionState, UserCredential(email, password))
     }
 
