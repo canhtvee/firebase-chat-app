@@ -39,13 +39,18 @@ class MainActivity : FragmentActivity() {
 
     override fun onStart() {
         super.onStart()
-
         // On check user session
         val mainNav = Navigation.findNavController(binding.navHostFragmentContainer)
         when (sharePreferencesAccess.getUserSession().sessionState) {
             sharedPreferencesKeys.STATE_SIGN_IN -> mainNav.navigate(R.id.action_global_homeFragment)
-            sharedPreferencesKeys.STATE_SIGN_OUT -> mainNav.navigate(R.id.action_global_loginFragment)
-            else -> mainNav.navigate(R.id.action_global_registerFragment)
+            sharedPreferencesKeys.STATE_SIGN_OUT -> {
+                mainNav.popBackStack()
+                mainNav.navigate(R.id.action_global_loginFragment)
+            }
+            else -> {
+                mainNav.popBackStack()
+                mainNav.navigate(R.id.action_global_registerFragment)
+            }
         }
     }
 }

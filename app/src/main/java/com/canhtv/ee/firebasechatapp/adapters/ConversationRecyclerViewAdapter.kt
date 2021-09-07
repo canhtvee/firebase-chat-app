@@ -3,11 +3,16 @@ package com.canhtv.ee.firebasechatapp.adapters
 import android.view.*
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageButton
+import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.TransitionManager
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.UserData
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.transition.MaterialContainerTransform
 
 class  ConversationRecyclerViewAdapter(
     private val data: MutableList<UserData>,
@@ -15,15 +20,16 @@ class  ConversationRecyclerViewAdapter(
 ) : RecyclerView.Adapter<ConversationRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(view: View, onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(view) {
+        private val conversationItemView: LinearLayoutCompat = view.findViewById<LinearLayoutCompat>(R.id.conversation_iv)
 
-        val collapseView: ConstraintLayout = view.findViewById(R.id.conversation_iv_collapse)
+        private val collapseView: ConstraintLayout = view.findViewById(R.id.conversation_iv_collapse)
         val collapseTextView: TextView = view.findViewById(R.id.conversation_iv_message_text)
-        val collapseBtn: AppCompatImageButton = view.findViewById(R.id.conversation_iv_button)
+        private val collapseBtn: AppCompatImageButton = view.findViewById(R.id.conversation_iv_button)
 
-        val expandView: ConstraintLayout = view.findViewById(R.id.conversation_iv_expand)
+        private val expandView: ConstraintLayout = view.findViewById(R.id.conversation_iv_expand)
         val expandTextView: TextView = view.findViewById(R.id.conversation_ivx_message_text)
-        val expandBtn: AppCompatImageButton = view.findViewById(R.id.conversation_ivx_button)
-        val expandToolbar: MaterialToolbar = view.findViewById(R.id.conversation_ivx_toolbar)
+        private val expandBtn: AppCompatImageButton = view.findViewById(R.id.conversation_ivx_button)
+        private val expandToolbar: MaterialToolbar = view.findViewById(R.id.conversation_ivx_toolbar)
 
         init {
             collapseView.setOnClickListener {
@@ -31,13 +37,12 @@ class  ConversationRecyclerViewAdapter(
             }
 
             collapseBtn.setOnClickListener {
-                collapseView.visibility = View.GONE
-                expandView.visibility = View.VISIBLE
+                transition(collapseView, expandView, conversationItemView as ViewGroup)
+
             }
 
             expandBtn.setOnClickListener {
-                expandView.visibility = View.GONE
-                collapseView.visibility = View.VISIBLE
+                transition(expandView, collapseView, conversationItemView as ViewGroup)
             }
 
             expandToolbar.setOnMenuItemClickListener { menu ->
@@ -47,6 +52,18 @@ class  ConversationRecyclerViewAdapter(
                 return@setOnMenuItemClickListener true
             }
         }
+
+        private fun transition(startV: View, endV: View, viewGroup: ViewGroup) {
+            startV.visibility = View.GONE
+            endV.visibility = View.VISIBLE
+            val transform = MaterialContainerTransform().apply {
+                startView = startV
+                endView = endV
+                scrimColor = Color.Transparent.toArgb()
+            }
+            TransitionManager.beginDelayedTransition(viewGroup, transform)
+        }
+
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -65,3 +82,5 @@ class  ConversationRecyclerViewAdapter(
     override fun getItemCount() = data.size
 
 }
+
+
