@@ -31,7 +31,6 @@ class RegisterFragment : Fragment() {
     lateinit var mainNavController: NavController
 
     private var _binding: FragmentRegisterBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(

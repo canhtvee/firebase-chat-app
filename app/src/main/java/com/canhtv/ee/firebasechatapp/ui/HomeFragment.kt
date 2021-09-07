@@ -27,7 +27,6 @@ class HomeFragment : Fragment() {
     lateinit var sessionViewModel: SessionViewModel
 
     private var _binding: FragmentHomeBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(

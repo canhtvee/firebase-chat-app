@@ -13,6 +13,7 @@ import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
 import com.canhtv.ee.firebasechatapp.databinding.FragmentLoginBinding
 import com.canhtv.ee.firebasechatapp.utils.Resource
+import com.canhtv.ee.firebasechatapp.utils.SessionController
 import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -24,7 +25,6 @@ class LoginFragment : Fragment() {
     lateinit var sessionViewModel: SessionViewModel
 
     private var _binding: FragmentLoginBinding? = null
-
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -70,11 +70,9 @@ class LoginFragment : Fragment() {
                 val user = UserCredential(email.text.toString().trim(), password.text.toString().trim())
                 sessionViewModel.applySignInSession(user)
 
-
             }
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
