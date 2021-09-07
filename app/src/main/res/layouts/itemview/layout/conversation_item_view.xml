@@ -4,6 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
-    <include layout="@layout/conversation_item_view_collapse" />
-    <include layout="@layout/conversation_item_view_expand" />
+    <include
+        android:id="@+id/id_conversation_item_view_collapse"
+        layout="@layout/conversation_item_view_collapse" />
+    <include
+        android:id="@+id/id_conversation_item_view_expand"
+        layout="@layout/conversation_item_view_expand" />
 </androidx.appcompat.widget.LinearLayoutCompat>

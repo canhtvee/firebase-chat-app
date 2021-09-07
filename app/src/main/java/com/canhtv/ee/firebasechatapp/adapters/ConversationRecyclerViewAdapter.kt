@@ -1,5 +1,6 @@
 package com.canhtv.ee.firebasechatapp.adapters
 
+import android.content.Context
 import android.view.*
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageButton
@@ -12,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.UserData
+import com.canhtv.ee.firebasechatapp.databinding.ConversationItemViewBinding
 import com.canhtv.ee.firebasechatapp.databinding.ConversationItemViewCollapseBinding
+import com.canhtv.ee.firebasechatapp.databinding.ConversationItemViewExpandBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.transition.MaterialContainerTransform
 
@@ -21,34 +24,28 @@ class  ConversationRecyclerViewAdapter(
     val onItemClickHandler: (UserData) -> Unit,
 ) : RecyclerView.Adapter<ConversationRecyclerViewAdapter.ViewHolder>() {
 
-    class ViewHolder(view: View, onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(
+        binding: ConversationItemViewBinding,
+        onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(binding.root) {
 
-        private val conversationItemView: LinearLayoutCompat = view.findViewById(R.id.conversation_iv)
-
-        private val collapseView: ConstraintLayout = view.findViewById(R.id.conversation_iv_collapse)
-        val collapseTextView: TextView = view.findViewById(R.id.conversation_iv_message_text)
-        private val collapseBtn: AppCompatImageButton = view.findViewById(R.id.conversation_iv_button)
-
-        private val expandView: ConstraintLayout = view.findViewById(R.id.conversation_iv_expand)
-        val expandTextView: TextView = view.findViewById(R.id.conversation_ivx_message_text)
-        private val expandBtn: AppCompatImageButton = view.findViewById(R.id.conversation_ivx_button)
-        private val expandToolbar: MaterialToolbar = view.findViewById(R.id.conversation_ivx_toolbar)
+        private val conversationItemView = binding.root
+        val collapseBinding = binding.idConversationItemViewCollapse
+        val expandBinding = binding.idConversationItemViewExpand
 
         init {
-            collapseView.setOnClickListener {
+            collapseBinding.root.setOnClickListener {
                 onItemClicked(absoluteAdapterPosition)
             }
 
-            collapseBtn.setOnClickListener {
-                transition(collapseView, expandView, conversationItemView as ViewGroup)
-
+            collapseBinding.conversationIvButton.setOnClickListener {
+                transition(collapseBinding.root, expandBinding.root, conversationItemView as ViewGroup)
             }
 
-            expandBtn.setOnClickListener {
-                transition(expandView, collapseView, conversationItemView as ViewGroup)
+            expandBinding.conversationIvxButton.setOnClickListener {
+                transition(expandBinding.root, collapseBinding.root, conversationItemView as ViewGroup)
             }
 
-            expandToolbar.setOnMenuItemClickListener { menu ->
+            expandBinding.conversationIvxToolbar.setOnMenuItemClickListener { menu ->
                 if (menu.itemId == R.id.ic_full_screen_conversation) {
                     onItemClicked(absoluteAdapterPosition)
                 }
@@ -70,16 +67,13 @@ class  ConversationRecyclerViewAdapter(
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.conversation_item_view, viewGroup, false)
-        return ViewHolder(view) {
-            onItemClickHandler(data[it])
-        }
+        val binding = ConversationItemViewBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        return ViewHolder( binding) { onItemClickHandler(data[it]) }
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.collapseTextView.text = data[position].message
-        viewHolder.expandTextView.text = data[position].message
+        viewHolder.collapseBinding.conversationIvMessageText.text = data[position].message
+        viewHolder.expandBinding.conversationIvxMessageText.text = data[position].message
     }
 
     override fun getItemCount() = data.size
