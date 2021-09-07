@@ -49,7 +49,7 @@ class ConversationFragment : Fragment() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 .apply { initialPrefetchItemCount = 6 }
-            adapter = ConversationRecyclerViewAdapter(users) { mainNavController.navigate(R.id.action_global_loginFragment) }
+            adapter = ConversationRecyclerViewAdapter(users) { mainNavController.navigate(R.id.action_global_chatFragment) }
             hasFixedSize()
             addItemDecoration(itemDivider)
         }

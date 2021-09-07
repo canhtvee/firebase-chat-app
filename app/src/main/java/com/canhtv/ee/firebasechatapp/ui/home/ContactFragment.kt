@@ -1,7 +1,9 @@
 package com.canhtv.ee.firebasechatapp.ui.home
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
@@ -11,14 +13,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.adapters.ContactRecyclerViewAdapter
 import com.canhtv.ee.firebasechatapp.data.models.UserData
+import com.canhtv.ee.firebasechatapp.databinding.FragmentContactBinding
+import com.canhtv.ee.firebasechatapp.databinding.FragmentConversationBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ContactFragment : Fragment(R.layout.fragment_contact) {
+class ContactFragment : Fragment() {
 
     @Inject
     lateinit var mainNavController: NavController
+
+    private var _binding: FragmentContactBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentContactBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val users = mutableListOf<UserData>(UserData("Name 1", "Image 1", "Message 1"))
@@ -27,22 +43,21 @@ class ContactFragment : Fragment(R.layout.fragment_contact) {
             users.add(user)
         }
 
-        val recyclerView = view.findViewById<RecyclerView>(R.id.contact_recycler_view)
+        val recyclerView = binding.contactRecyclerView
         val itemDivider = DividerItemDecoration(recyclerView.context, LinearLayoutManager.VERTICAL)
         itemDivider.setDrawable(AppCompatResources.getDrawable(recyclerView.context, R.drawable.item_divider)!!)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 .apply { initialPrefetchItemCount = 6 }
-            adapter = ContactRecyclerViewAdapter(users){
-                onItemClick()
-            }
+            adapter = ContactRecyclerViewAdapter(users){ mainNavController.navigate(R.id.action_global_chatFragment) }
             hasFixedSize()
             addItemDecoration(itemDivider)
         }
     }
 
-    private fun onItemClick() {
-        mainNavController.navigate(R.id.action_global_registerFragment)
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }

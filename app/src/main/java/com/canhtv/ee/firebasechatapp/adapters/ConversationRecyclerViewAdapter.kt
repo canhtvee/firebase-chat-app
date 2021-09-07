@@ -7,10 +7,12 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.LayoutInflaterCompat
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.UserData
+import com.canhtv.ee.firebasechatapp.databinding.ConversationItemViewCollapseBinding
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.transition.MaterialContainerTransform
 
@@ -20,7 +22,8 @@ class  ConversationRecyclerViewAdapter(
 ) : RecyclerView.Adapter<ConversationRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(view: View, onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(view) {
-        private val conversationItemView: LinearLayoutCompat = view.findViewById<LinearLayoutCompat>(R.id.conversation_iv)
+
+        private val conversationItemView: LinearLayoutCompat = view.findViewById(R.id.conversation_iv)
 
         private val collapseView: ConstraintLayout = view.findViewById(R.id.conversation_iv_collapse)
         val collapseTextView: TextView = view.findViewById(R.id.conversation_iv_message_text)
