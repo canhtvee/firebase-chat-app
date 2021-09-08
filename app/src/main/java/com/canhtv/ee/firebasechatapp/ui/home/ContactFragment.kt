@@ -49,7 +49,7 @@ class ContactFragment : Fragment() {
         recyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                 .apply { initialPrefetchItemCount = 6 }
-            adapter = ContactRecyclerViewAdapter(users){ mainNavController.navigate(R.id.action_global_chatFragment) }
+            adapter = ContactRecyclerViewAdapter(users){ mainNavController.navigate(R.id.action_global_profileFragment) }
             hasFixedSize()
             addItemDecoration(itemDivider)
         }

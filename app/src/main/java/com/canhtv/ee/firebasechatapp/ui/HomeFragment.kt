@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val title = listOf<String>("Conversation", "Contact")
+        val title = listOf<String>("Conversation", "Contact", "Profile")
 
         binding.pager.adapter = HomeFragmentAdapter(this)
         TabLayoutMediator(binding.tabLayout, binding.pager) { tab, position ->

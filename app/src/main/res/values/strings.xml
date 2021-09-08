@@ -29,5 +29,6 @@
     <string name="register_successful">Register Successful!</string>
     <string name="ic_info">Info</string>
     <string name="hint_message">Type messages</string>
+    <string name="profile">Profile</string>
 
 </resources>

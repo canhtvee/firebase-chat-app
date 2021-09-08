@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.canhtv.ee.firebasechatapp.ui.profile.ProfileFragment"
+        android:name="com.canhtv.ee.firebasechatapp.ui.home.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <action

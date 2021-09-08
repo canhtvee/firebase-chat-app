@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="profile_drawables">
+        <item>@drawable/ic_dark_mode</item>
+        <item>@drawable/ic_notifications</item>
+        <item>@drawable/ic_exit_to_app</item>
+    </array>
+
+</resources>
