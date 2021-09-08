@@ -58,13 +58,22 @@
         <entry key="..\:/Users/JGC/AndroidStudioProjects/firebase-chat-app/app/src/main/res/menu/menu_contact_action.xml" value="0.1" />
         <entry key="..\:/Users/JGC/AndroidStudioProjects/firebase-chat-app/app/src/main/res/menu/menu_conversation_action.xml" value="0.27760416666666665" />
         <entry key="..\:/Users/JGC/AndroidStudioProjects/firebase-chat-app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.29375" />
+        <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/drawable/ic_back.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/drawable/ic_info.xml" value="0.2814814814814815" />
+        <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/drawable/ic_send.xml" value="0.290625" />
+        <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/drawable/ic_video_call.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/contact_item_view.xml" value="0.1334853090172239" />
         <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/conversation_item_view.xml" value="0.21920289855072464" />
         <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/conversation_item_view_collapse.xml" value="0.21920289855072464" />
         <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/itemview/layout/conversation_item_view_expand.xml" value="0.21920289855072464" />
         <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/activity_main.xml" value="0.15307971014492755" />
+        <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_chat.xml" value="0.264" />
+        <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_contact.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_home.xml" value="0.1598731884057971" />
         <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_login.xml" value="0.14166666666666666" />
         <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/layouts/main/layout/fragment_register.xml" value="0.12182971014492754" />
+        <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/menu/menu_chat_action.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/canht/AndroidStudioProjects/firebase-chat-app/app/src/main/res/menu/menu_contact_action.xml" value="0.27447916666666666" />
       </map>
     </option>
   </component>

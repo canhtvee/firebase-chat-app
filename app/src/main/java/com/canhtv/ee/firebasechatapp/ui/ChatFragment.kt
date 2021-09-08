@@ -24,6 +24,10 @@ class ChatFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.chatTextInput.isHintAnimationEnabled = false
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

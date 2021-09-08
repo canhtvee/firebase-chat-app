@@ -27,6 +27,15 @@
         <item name="boxCornerRadiusBottomEnd">5dp</item>
     </style>
 
+    <style name="Theme.ChatTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="cornerFamily">rounded</item>
+        <item name="boxCornerRadiusTopStart">25dp</item>
+        <item name="boxCornerRadiusTopEnd">25dp</item>
+        <item name="boxCornerRadiusBottomStart">25dp</item>
+        <item name="boxCornerRadiusBottomEnd">25dp</item>
+        <item name="hintAnimationEnabled">false</item>
+    </style>
+
     <style name="Theme.Button" parent="Widget.MaterialComponents.Button">
         <item name="cornerFamily">rounded</item>
         <item name="cornerRadius">30dp</item>

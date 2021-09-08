@@ -27,5 +27,7 @@
     <string name="do_not_have_account">Don\'t have an account?</string>
     <string name="hint_confirm_password">Confirm Password</string>
     <string name="register_successful">Register Successful!</string>
+    <string name="ic_info">Info</string>
+    <string name="hint_message">Type messages</string>
 
 </resources>
