@@ -28,7 +28,6 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
-    @SuppressLint("ResourceType", "Recycle")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val actions = listOf("Dark Mode", "Notifications", "Log Out")
         val icons = listOf(R.drawable.ic_dark_mode, R.drawable.ic_notifications, R.drawable.ic_exit_to_app)
