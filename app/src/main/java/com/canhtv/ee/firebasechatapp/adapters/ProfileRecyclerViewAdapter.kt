@@ -1,5 +1,6 @@
 package com.canhtv.ee.firebasechatapp.adapters
 
+import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -10,7 +11,8 @@ import com.canhtv.ee.firebasechatapp.databinding.ProfileItemViewBinding
 
 class ProfileRecyclerViewAdapter(
     private val listAction: List<String>,
-    private val icon: Drawable
+    private val icons: List<Int>,
+    private val context: Context
 ) : RecyclerView.Adapter<ProfileRecyclerViewAdapter.ViewHolder>() {
 
         class ViewHolder(val binding: ProfileItemViewBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -28,7 +30,7 @@ class ProfileRecyclerViewAdapter(
 
         override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
             with(viewHolder.binding) {
-                profileItemViewIcon.setImageDrawable(icon)
+                profileItemViewIcon.setImageDrawable(AppCompatResources.getDrawable(context, icons[position]))
                 profileItemViewText.text = listAction[position]
             }
         }

@@ -98,7 +98,6 @@ dependencies {
     // Feature module Support
     implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.5"
     androidTestImplementation "androidx.navigation:navigation-testing:2.3.5"
-    implementation "androidx.navigation:navigation-compose:2.4.0-alpha08"
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.37")
@@ -116,7 +115,7 @@ dependencies {
     // Navigation Component
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
-    implementation("androidx.navigation:navigation-compose:2.4.0-alpha08")
+    implementation "androidx.navigation:navigation-compose:2.4.0-alpha08"
     implementation "org.jetbrains.kotlin:kotlin-reflect:1.5.21"
 
     // Shimming effect

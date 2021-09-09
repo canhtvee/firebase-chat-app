@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <array name="profile_drawables">
+    <array name="profile_drawable_ids">
         <item>@drawable/ic_dark_mode</item>
-        <item>@drawable/ic_notifications</item>
+        <item>@drawable/ic_back</item>
         <item>@drawable/ic_exit_to_app</item>
     </array>
 
