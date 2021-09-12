@@ -19,13 +19,13 @@ class SessionRepository @Inject constructor(
     suspend fun applyRegisterSession(userCredential: UserCredential
     ) = applySession(
         UserSession(sharedPrefKeys.STATE_SIGN_IN, userCredential),
-        sharedPrefAccess,)
+        sharedPrefAccess)
     { firebaseAuthService.createUserWithEmailAndPassword(userCredential) }
 
     suspend fun applySignInSession(userCredential: UserCredential
     ) = applySession(
         UserSession(sharedPrefKeys.STATE_SIGN_IN, userCredential),
-        sharedPrefAccess,)
+        sharedPrefAccess)
         { firebaseAuthService.signInWithEmailAndPassword(userCredential) }
 
 }
