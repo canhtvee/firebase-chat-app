@@ -44,24 +44,24 @@ class FirebaseDatabaseService @Inject constructor(
         }
     }
 
-    suspend fun readMessage(): Flow<ArrayList<Message>> = flow {
+    fun readMessage() {
         val messages = ArrayList<Message>()
-        val task: Task<DataSnapshot> = firebaseDatabaseReference.child("messages").get()
-
-        firebaseDatabaseReference.child("messages").addValueEventListener(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                messages.clear()
-                snapshot.children.forEach {
-                    val msg = it.getValue(Message::class.java)
-                    msg!!.messageId = it.key
-                    messages.add(msg)
-                    Log.d("FirebaseDatabaseService", "${msg.messageId}: ${msg.text}" )
+        firebaseDatabaseReference.child("messages")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    messages.clear()
+                    snapshot.children.forEach {
+                        val msg = it.getValue(Message::class.java)
+                        msg!!.messageId = it.key
+                        messages.add(msg)
+                        Log.d("FirebaseDatabaseService", "${msg.messageId}: ${msg.text}")
+                    }
                 }
-            }
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("FirebaseDatabaseService", "readMessages failed: ${error.toString()}" )
-            }
-        })
-    }
 
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d("FirebaseDatabaseService", "readMessages failed: ${error.toString()}")
+                }
+            })
+
+    }
 }
