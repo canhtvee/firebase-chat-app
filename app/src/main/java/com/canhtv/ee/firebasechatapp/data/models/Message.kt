@@ -7,10 +7,10 @@ class Message {
     var text :String? =null
     constructor() {}
     constructor(
-        text :String?,
         senderId :String?,
+        text :String?,
     ){
-        this.text = text
         this.senderId = senderId
+        this.text = text
     }
 }

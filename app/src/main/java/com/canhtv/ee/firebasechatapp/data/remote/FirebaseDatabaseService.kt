@@ -2,14 +2,18 @@ package com.canhtv.ee.firebasechatapp.data.remote
 
 import android.util.Log
 import com.canhtv.ee.firebasechatapp.data.models.Message
-import com.google.android.gms.tasks.Task
+import com.canhtv.ee.firebasechatapp.utils.Resource
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.channels.onFailure
+import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
@@ -63,5 +67,30 @@ class FirebaseDatabaseService @Inject constructor(
                 }
             })
 
+    }
+
+
+    @ExperimentalCoroutinesApi
+    fun readMessageFlow(child: String): Flow<Resource<ArrayList<Message>>> = callbackFlow {
+        val messages = ArrayList<Message>()
+        val listener = object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach { snapshot1 ->
+                    messages.clear()
+                    val msg = snapshot1.getValue(Message::class.java)
+                    msg!!.messageId = snapshot1.key
+                    messages.add(msg)
+                    trySendBlocking(Resource.Success(messages))
+                        .onFailure { close(it) }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                trySend(Resource.Error(error.message))
+                this@callbackFlow.close(error.toException())
+            }
+        }
+        firebaseDatabaseReference.child(child).addValueEventListener(listener)
+        awaitClose { firebaseDatabaseReference.child(child).removeEventListener(listener) }
     }
 }
