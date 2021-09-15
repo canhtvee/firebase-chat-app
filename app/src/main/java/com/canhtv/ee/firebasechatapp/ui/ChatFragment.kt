@@ -65,11 +65,11 @@ class ChatFragment : Fragment() {
         }
 
         lifecycleScope.launch {
-            firebaseDatabaseService.readMessageFlow("messages").collect { resource ->
+            firebaseDatabaseService.readMessageFlow ("messages").collect { resource ->
                 when (resource) {
                     is Resource.Success -> {
                         Toast.makeText(context, "readMessageFlow Successful ${resource.data.toString()}", Toast.LENGTH_LONG).show()
-                        resource.data.forEach { Log.d("readMessageFlow:", "${it.messageId}: ${it.text!!}") }
+                        resource.data.forEach { Log.d("readMessageFlow:", "${it.senderId}: ${it.text!!}") }
                     }
                     else -> {
                         Toast.makeText(context, "readMessageFlow Failure", Toast.LENGTH_LONG).show()
