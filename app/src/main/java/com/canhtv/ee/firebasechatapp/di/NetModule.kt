@@ -1,10 +1,9 @@
 package com.canhtv.ee.firebasechatapp.di
 
-import com.canhtv.ee.firebasechatapp.data.remote.FirebaseAuthService
-import com.canhtv.ee.firebasechatapp.data.remote.FirebaseDatabaseService
+import com.canhtv.ee.firebasechatapp.data.remote.FirebaseAuthServices
+import com.canhtv.ee.firebasechatapp.data.remote.FirebaseDatabaseServices
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import dagger.Module
@@ -20,7 +19,7 @@ object NetModule {
     fun provideFirebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
 
     @Provides
-    fun provideFirebaseAuthService(auth: FirebaseAuth): FirebaseAuthService = FirebaseAuthService(auth)
+    fun provideFirebaseAuthService(auth: FirebaseAuth): FirebaseAuthServices = FirebaseAuthServices(auth)
 
     @Provides
     fun provideFirebaseUser(auth: FirebaseAuth) = auth.currentUser
@@ -30,6 +29,6 @@ object NetModule {
 
     @Provides
     fun provideFirebaseDataService(firebaseDatabaseReference: DatabaseReference
-    ) = FirebaseDatabaseService(firebaseDatabaseReference)
+    ) = FirebaseDatabaseServices(firebaseDatabaseReference)
 
 }

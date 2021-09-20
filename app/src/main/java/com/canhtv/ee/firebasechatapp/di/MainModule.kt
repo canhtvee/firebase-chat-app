@@ -2,11 +2,10 @@ package com.canhtv.ee.firebasechatapp.di
 
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesAccess
-import com.canhtv.ee.firebasechatapp.data.remote.FirebaseAuthService
+import com.canhtv.ee.firebasechatapp.data.remote.FirebaseAuthServices
 import com.canhtv.ee.firebasechatapp.data.repositories.SessionRepository
 import com.canhtv.ee.firebasechatapp.utils.SessionController
 import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
@@ -26,7 +25,7 @@ object MainModule {
     ): NavController = activity.findNavController(R.id.nav_host_fragment_container)
 
     @Provides
-    fun provideSessionRepository(firebaseAuthService: FirebaseAuthService,
+    fun provideSessionRepository(firebaseAuthService: FirebaseAuthServices,
                                  sharedPreferencesKeys: SharedPreferencesKeys,
                                  sharePreferencesAccess: SharePreferencesAccess
     ) = SessionRepository(firebaseAuthService, sharedPreferencesKeys, sharePreferencesAccess)

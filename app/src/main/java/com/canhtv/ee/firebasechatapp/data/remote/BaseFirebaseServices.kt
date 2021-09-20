@@ -9,15 +9,14 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.tasks.await
 
-abstract class BaseFirebaseService {
+abstract class BaseFirebaseServices {
 
-    protected suspend fun getResult(
+    protected suspend fun getAuthResult(
         auth: FirebaseAuth,
         call: suspend () -> Task<AuthResult>
     ): Resource<FirebaseUser> {
         return try {
             val task = call.invoke()
-            // Not executing next commands during waiting task was completed
             task.await()
             if (auth.currentUser != null) {Resource.Success(auth.currentUser!!)} else {
                 Resource.Error("${task.exception}")

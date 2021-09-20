@@ -1,6 +1,5 @@
 package com.canhtv.ee.firebasechatapp.ui
 
-import android.net.wifi.hotspot2.pps.Credential
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -8,24 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.compose.ui.platform.LocalDensity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.canhtv.ee.firebasechatapp.data.models.Message
-import com.canhtv.ee.firebasechatapp.data.remote.FirebaseDatabaseService
+import com.canhtv.ee.firebasechatapp.data.remote.FirebaseDatabaseServices
 import com.canhtv.ee.firebasechatapp.databinding.FragmentChatBinding
 import com.canhtv.ee.firebasechatapp.utils.Resource
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -33,7 +23,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ChatFragment : Fragment() {
 
-    @Inject lateinit var firebaseDatabaseService: FirebaseDatabaseService
+    @Inject lateinit var firebaseDatabaseServices: FirebaseDatabaseServices
 
     private var _binding: FragmentChatBinding? = null
     private val binding get() = _binding!!
@@ -59,13 +49,13 @@ class ChatFragment : Fragment() {
                     val msg = Message(currentUser!!.uid, text.toString().trim())
                     Log.d("msg:", msg.toString())
                     binding.chatEditText.text!!.clear()
-                    firebaseDatabaseService.writeMessage(msg)
+                    firebaseDatabaseServices.writeMessage(msg)
                 }
             }
         }
 
         lifecycleScope.launch {
-            firebaseDatabaseService.readMessageFlow ("messages").collect { resource ->
+            firebaseDatabaseServices.readMessageFlow ("messages").collect { resource ->
                 when (resource) {
                     is Resource.Success -> {
                         Toast.makeText(context, "readMessageFlow Successful ${resource.data.toString()}", Toast.LENGTH_LONG).show()

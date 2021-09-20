@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
-class FirebaseDatabaseService @Inject constructor(
+class FirebaseDatabaseServices @Inject constructor(
     private val firebaseDatabaseReference: DatabaseReference
 ) {
     suspend fun writeUser(user: FirebaseUser) {
