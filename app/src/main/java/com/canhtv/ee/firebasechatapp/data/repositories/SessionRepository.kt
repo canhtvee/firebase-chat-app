@@ -12,16 +12,16 @@ class SessionRepository @Inject constructor(
     private val sharedPrefAccess: SharePreferencesAccess
 ) : BaseSessionRepository(){
 
-    suspend fun applyRegisterSession(userCredential: UserCredential
-    ) = applySession(
-        UserSession(sharedPrefKeys.STATE_SIGN_IN, userCredential),
-        sharedPrefAccess)
-    { firebaseAuthService.createUserWithEmailAndPassword(userCredential) }
-
-    suspend fun applySignInSession(userCredential: UserCredential
-    ) = applySession(
-        UserSession(sharedPrefKeys.STATE_SIGN_IN, userCredential),
-        sharedPrefAccess)
-        { firebaseAuthService.signInWithEmailAndPassword(userCredential) }
+//    suspend fun applyRegisterSession(userCredential: UserCredential
+//    ) = applySession(
+//        UserSession(sharedPrefKeys.STATE_SIGN_IN, userCredential),
+//        sharedPrefAccess)
+//    { firebaseAuthService.createUserWithEmailAndPassword(userCredential) }
+//
+//    suspend fun applySignInSession(userCredential: UserCredential
+//    ) = applySession(
+//        UserSession(sharedPrefKeys.STATE_SIGN_IN, userCredential),
+//        sharedPrefAccess)
+//        { firebaseAuthService.signInWithEmailAndPassword(userCredential) }
 
 }
