@@ -1,8 +1,9 @@
 package com.canhtv.ee.firebasechatapp.di
 
-import com.canhtv.ee.firebasechatapp.data.remote.FirebaseAuthServices
-import com.canhtv.ee.firebasechatapp.data.remote.FirebaseDatabaseServices
+import com.canhtv.ee.firebasechatapp.data.remote.FirebaseUserManager
+import com.canhtv.ee.firebasechatapp.utils.SessionKeys
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -16,19 +17,19 @@ import dagger.hilt.android.components.ActivityComponent
 object NetModule {
 
     @Provides
-    fun provideFirebaseAuth(): FirebaseAuth = FirebaseAuth.getInstance()
-
-    @Provides
-    fun provideFirebaseAuthService(auth: FirebaseAuth): FirebaseAuthServices = FirebaseAuthServices(auth)
-
-    @Provides
-    fun provideFirebaseUser(auth: FirebaseAuth) = auth.currentUser
+    fun provideFirebaseAuth(): FirebaseAuth = Firebase.auth
 
     @Provides
     fun provideFirebaseDatabase(): DatabaseReference = Firebase.database.reference
 
     @Provides
-    fun provideFirebaseDataService(firebaseDatabaseReference: DatabaseReference
-    ) = FirebaseDatabaseServices(firebaseDatabaseReference)
+    fun provideFirebaseUser(firebaseAuth: FirebaseAuth) = firebaseAuth.currentUser
 
+    @Provides
+    fun provideFirebaseUsersManager(
+        sessionKeys: SessionKeys,
+        firebaseAuth: FirebaseAuth,
+        databaseReference: DatabaseReference,
+    )
+    = FirebaseUserManager(sessionKeys,firebaseAuth, databaseReference)
 }

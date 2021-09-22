@@ -1,17 +1,17 @@
 package com.canhtv.ee.firebasechatapp.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
+import com.canhtv.ee.firebasechatapp.data.models.UserProfile
 import com.canhtv.ee.firebasechatapp.data.models.UserSession
-import com.canhtv.ee.firebasechatapp.data.repositories.SessionRepository
+import com.canhtv.ee.firebasechatapp.data.repositories.SessionManager
 import com.canhtv.ee.firebasechatapp.utils.Resource
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SessionViewModel @Inject constructor(
-    private val sessionRepository: SessionRepository
+    private val sessionManager: SessionManager
 ): ViewModel() {
 
     private val _session = MutableLiveData<Resource<UserSession>>()
@@ -19,15 +19,15 @@ class SessionViewModel @Inject constructor(
 
     fun applySignInSession(userCredential: UserCredential) {
         viewModelScope.launch {
-           sessionRepository.applySignInSession(userCredential).collect {
+            sessionManager.applySignInSession(userCredential).collect {
                _session.value = it
            }
         }
     }
 
-    fun applyRegisterSession(userCredential: UserCredential) {
+    fun applyRegisterSession(userCredential: UserCredential, userProfile: UserProfile) {
         viewModelScope.launch {
-            sessionRepository.applyRegisterSession(userCredential).collect {
+            sessionManager.applyRegisterSession(userCredential, userProfile).collect {
                 _session.value = it
             }
         }

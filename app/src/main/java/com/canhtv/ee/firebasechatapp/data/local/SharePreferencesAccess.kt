@@ -1,37 +1,39 @@
 package com.canhtv.ee.firebasechatapp.data.local
 
 import android.content.SharedPreferences
-import android.util.Log
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
 import com.canhtv.ee.firebasechatapp.data.models.UserSession
-import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
-import com.google.firebase.auth.FirebaseUser
+import com.canhtv.ee.firebasechatapp.utils.SessionKeys
 import javax.inject.Inject
 
 class SharePreferencesAccess @Inject constructor(
     private val sharedPreferences: SharedPreferences,
-    private val sharedPrefKeys: SharedPreferencesKeys
+    private val sessionKeys: SessionKeys,
 ){
-    fun putUserSession(userSession: UserSession) {
+    fun putSession(userSession: UserSession) {
         with(sharedPreferences.edit()) {
-            putInt(sharedPrefKeys.SESSION_STATE, userSession.sessionState )
-            putString(sharedPrefKeys.EMAIL, userSession.credential.email)
-            putString(sharedPrefKeys.PASSWORD, userSession.credential.password!!)
+            putInt(sessionKeys.SESSION_STATE, userSession.sessionState )
+            putString(sessionKeys.EMAIL, userSession.credential!!.email)
+            putString(sessionKeys.PASSWORD, userSession.credential!!.password!!)
             apply()
         }
     }
 
-    fun getUserSession(): UserSession {
-        val sessionState = getInt(sharedPrefKeys.SESSION_STATE)
-        val email = getString(sharedPrefKeys.EMAIL)
-        val password = getString(sharedPrefKeys.PASSWORD)
+    fun getSession(): UserSession {
+        val sessionState = getInt(sessionKeys.SESSION_STATE)
+        val email = getString(sessionKeys.EMAIL)
+        val password = getString(sessionKeys.PASSWORD)
         return UserSession(sessionState, UserCredential(email, password))
     }
 
+    fun putInt(key: String, value: Int) {
+        sharedPreferences.edit().putInt(key, value).apply()
+    }
+
     private fun getInt(key: String) = sharedPreferences
-        .getInt(key, sharedPrefKeys.DEFAULT_STATE)
+        .getInt(key, sessionKeys.DEFAULT_STATE)
 
     private fun getString(key: String) = sharedPreferences
-        .getString(key, sharedPrefKeys.DEFAULT_STRING)
+        .getString(key, sessionKeys.DEFAULT_STRING)
 
 }

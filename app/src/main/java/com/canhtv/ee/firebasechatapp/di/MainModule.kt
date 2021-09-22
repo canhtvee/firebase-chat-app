@@ -5,10 +5,9 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesAccess
-import com.canhtv.ee.firebasechatapp.data.remote.FirebaseAuthServices
-import com.canhtv.ee.firebasechatapp.data.repositories.SessionRepository
-import com.canhtv.ee.firebasechatapp.utils.SessionController
-import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
+import com.canhtv.ee.firebasechatapp.data.remote.FirebaseUserManager
+import com.canhtv.ee.firebasechatapp.data.repositories.SessionManager
+import com.canhtv.ee.firebasechatapp.utils.SessionKeys
 import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
 import dagger.Module
 import dagger.Provides
@@ -25,19 +24,13 @@ object MainModule {
     ): NavController = activity.findNavController(R.id.nav_host_fragment_container)
 
     @Provides
-    fun provideSessionRepository(firebaseAuthService: FirebaseAuthServices,
-                                 sharedPreferencesKeys: SharedPreferencesKeys,
-                                 sharePreferencesAccess: SharePreferencesAccess
-    ) = SessionRepository(firebaseAuthService, sharedPreferencesKeys, sharePreferencesAccess)
+    fun provideSessionManager(sessionKeys: SessionKeys,
+                              sharePreferencesAccess: SharePreferencesAccess,
+                              firebaseUserManager: FirebaseUserManager,)
+    = SessionManager(sessionKeys, sharePreferencesAccess, firebaseUserManager,)
 
     @Provides
-    fun provideSessionViewModel(sessionRepository: SessionRepository
-    ) = SessionViewModel(sessionRepository)
-
-    @Provides
-    fun provideSessionController(
-        sharedPreferencesKeys: SharedPreferencesKeys,
-        mainNavController: NavController
-    ) = SessionController(sharedPreferencesKeys, mainNavController)
+    fun provideSessionViewModel(sessionManager: SessionManager
+    ) = SessionViewModel(sessionManager)
 
 }

@@ -1,6 +1,6 @@
 package com.canhtv.ee.firebasechatapp.utils
 
-data class SharedPreferencesKeys (
+data class SessionKeys (
     val SHARED_PREFERENCES : String = "userSession",
     val USER_NAME          : String = "username",
     val USER_ID            : String = "userId",

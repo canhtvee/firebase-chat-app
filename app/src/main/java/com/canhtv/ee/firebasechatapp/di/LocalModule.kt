@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.fragment.app.FragmentActivity
 import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesAccess
-import com.canhtv.ee.firebasechatapp.utils.SharedPreferencesKeys
+import com.canhtv.ee.firebasechatapp.utils.SessionKeys
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,12 +15,12 @@ import dagger.hilt.android.components.ActivityComponent
 
 object LocalModule {
     @Provides
-    fun provideSharedPreferenceKeys(): SharedPreferencesKeys = SharedPreferencesKeys()
+    fun provideSessionKeys(): SessionKeys = SessionKeys()
 
     @Provides
-    fun provideSharedPreferences(sharedPreferencesKeys: SharedPreferencesKeys,
+    fun provideSharedPreferences(sessionKeys: SessionKeys,
                                  activity: FragmentActivity
-    ): SharedPreferences = activity.getSharedPreferences(sharedPreferencesKeys.SHARED_PREFERENCES, Context.MODE_PRIVATE)
+    ): SharedPreferences = activity.getSharedPreferences(sessionKeys.SHARED_PREFERENCES, Context.MODE_PRIVATE)
 
     @Provides
     fun provideSharedPreferencesEditor(sharedPreferences: SharedPreferences
@@ -28,7 +28,7 @@ object LocalModule {
 
     @Provides
     fun provideSharedPreferencesAccess(sharedPreferences: SharedPreferences,
-                                       sharedPreferencesKeys: SharedPreferencesKeys
-    ) = SharePreferencesAccess(sharedPreferences, sharedPreferencesKeys)
+                                       sessionKeys: SessionKeys
+    ) = SharePreferencesAccess(sharedPreferences, sessionKeys)
 
 }
