@@ -10,8 +10,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
+import com.canhtv.ee.firebasechatapp.data.models.UserProfile
 import com.canhtv.ee.firebasechatapp.databinding.FragmentRegisterBinding
 import com.canhtv.ee.firebasechatapp.utils.Resource
 import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
@@ -26,9 +28,6 @@ class RegisterFragment : Fragment() {
 
     @Inject
     lateinit var sessionViewModel: SessionViewModel
-
-    @Inject
-    lateinit var mainNavController: NavController
 
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
@@ -46,6 +45,7 @@ class RegisterFragment : Fragment() {
         binding.registerLayoutSuccessful.visibility = View.GONE
         binding.registerLayout.visibility = View.VISIBLE
 
+        val username = binding.registerUsernameEditText
         val email = binding.registerEmailEditText
         val password = binding.registerPasswordEditText
         val confirmPassword = binding.registerConfirmPasswordEditText
@@ -57,7 +57,8 @@ class RegisterFragment : Fragment() {
                         binding.registerLayout.visibility = View.GONE
                         binding.registerLayoutSuccessful.visibility = View.VISIBLE
                         delay(500)
-                        mainNavController.navigate(R.id.action_global_homeFragment)
+                        Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container)
+                            .navigate(R.id.action_global_loginFragment)
                     }
                 }
                 is Resource.Loading -> {
@@ -70,11 +71,12 @@ class RegisterFragment : Fragment() {
         }
 
         binding.registerButton.setOnClickListener {
-            if (TextUtils.isEmpty(email.text) or (TextUtils.isEmpty(password.text)) or (password.text.toString() != confirmPassword.text.toString())) {
+            if (TextUtils.isEmpty(username.text) or TextUtils.isEmpty(email.text) or (TextUtils.isEmpty(password.text)) or (password.text.toString() != confirmPassword.text.toString())) {
                 Toast.makeText(context, "Check Credential", Toast.LENGTH_SHORT).show()
             }else {
-                val user = UserCredential(email.text.toString().trim(), password.text.toString().trim())
-                sessionViewModel.applyRegisterSession(user)
+                val userProfile = UserProfile(username.text.toString().trim(), null, null, null)
+                val userCredential = UserCredential(email.text.toString().trim(), password.text.toString().trim())
+                sessionViewModel.applyRegisterSession(userCredential, userProfile)
 
             }
         }

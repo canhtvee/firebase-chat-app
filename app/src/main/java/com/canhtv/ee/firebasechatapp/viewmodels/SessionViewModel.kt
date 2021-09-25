@@ -32,4 +32,13 @@ class SessionViewModel @Inject constructor(
             }
         }
     }
+
+    fun applySignOutSession() {
+        viewModelScope.launch {
+            sessionManager.applySignOutSession().collect {
+                _session.value = it
+            }
+        }
+    }
+
 }

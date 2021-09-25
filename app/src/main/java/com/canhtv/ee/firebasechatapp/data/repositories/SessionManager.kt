@@ -1,4 +1,5 @@
 package com.canhtv.ee.firebasechatapp.data.repositories
+
 import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesAccess
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
 import com.canhtv.ee.firebasechatapp.data.models.UserProfile
@@ -26,7 +27,6 @@ class SessionManager @Inject constructor(
         { sharePreferencesAccess.getSession() },
     )
 
-
     suspend fun applySignInSession(userCredential: UserCredential)
     = applySession(
         { firebaseUserManager.signInUser(userCredential) },
@@ -35,13 +35,13 @@ class SessionManager @Inject constructor(
     )
 
     suspend fun applySignOutSession(): Flow<Resource<UserSession>> = flow {
-        emit(Resource.Loading())
+        emit(Resource.Loading<UserSession>())
         when (val result = firebaseUserManager.signOutUser()) {
             is Result.Success -> {
                 sharePreferencesAccess.putInt(sessionKeys.SESSION_STATE, sessionKeys.STATE_SIGN_OUT)
                 emit(Resource.Success(sharePreferencesAccess.getSession()))
             }
-            is Result.Error -> emit(Resource.Error(result.message))
+            is Result.Error -> emit(Resource.Error<UserSession>(result.message))
         }
     }.flowOn(Dispatchers.IO)
 

@@ -5,7 +5,7 @@ import com.canhtv.ee.firebasechatapp.data.models.UserProfile
 import com.canhtv.ee.firebasechatapp.data.models.UserSession
 import com.canhtv.ee.firebasechatapp.utils.Result
 import com.canhtv.ee.firebasechatapp.utils.SessionKeys
-import com.canhtv.ee.firebasechatapp.utils.UserProfileKeys
+import com.canhtv.ee.firebasechatapp.utils.FirebaseKeys
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
@@ -16,7 +16,7 @@ class FirebaseUserManager @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val databaseReference: DatabaseReference,
 ) : BaseFirebaseServices() {
-    private val userProfileKeys = UserProfileKeys()
+    private val firebaseKeys = FirebaseKeys()
 
     suspend fun registerNewUser(userCredential: UserCredential, userProfile: UserProfile,): Result<UserSession> {
         return when (val authResult = getTaskResult { firebaseAuth.createUserWithEmailAndPassword(userCredential.email!!, userCredential.password!!) }) {
@@ -45,18 +45,18 @@ class FirebaseUserManager @Inject constructor(
     }
 
     suspend fun setOnlineStatus(firebaseUser: FirebaseUser, status: String)
-    = getTaskResult { databaseReference.child("users").child(firebaseUser.uid).
-    setValue(HashMap<String, Any>().put(userProfileKeys.IS_ONLINE, status)) }
+    = getTaskResult { databaseReference.child(firebaseKeys.DB_CHILD_USER).child(firebaseUser.uid).
+    setValue(HashMap<String, Any>().put(firebaseKeys.USER_IS_ONLINE, status)) }
 
     private suspend fun writeUser(firebaseUser: FirebaseUser, userProfile: UserProfile): Result<String> {
         val hashMap = HashMap<String, Any>()
         with(hashMap) {
-            put(userProfileKeys.USER_NAME, userProfile.username!!)
-            put(userProfileKeys.AVATAR_URL, "default")
-            put(userProfileKeys.EMAIL, firebaseUser.email!!)
-            put(userProfileKeys.IS_ONLINE, "online")
+            put(firebaseKeys.USER_NAME, userProfile.username!!)
+            put(firebaseKeys.USER_AVATAR_URL, "default")
+            put(firebaseKeys.USER_EMAIL, firebaseUser.email!!)
+            put(firebaseKeys.USER_IS_ONLINE, "online")
         }
-        return getTaskResult { databaseReference.child("users").child(firebaseUser.uid).setValue(hashMap) }
+        return getTaskResult { databaseReference.child(firebaseKeys.DB_CHILD_USER).child(firebaseUser.uid).setValue(hashMap) }
     }
 
 }

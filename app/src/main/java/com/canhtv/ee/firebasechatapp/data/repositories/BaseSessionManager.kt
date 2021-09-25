@@ -14,15 +14,15 @@ abstract class BaseSessionManager {
     protected suspend fun applySession(
         authRequest: suspend () -> Result<UserSession>,
         saveSession: (UserSession) -> Unit,
-        getSession: (Unit) -> (UserSession),
-    ): Flow<Resource<UserSession>> = flow {
-        emit(Resource.Loading())
+        getSession: () -> UserSession,
+    ) = flow {
+        emit(Resource.Loading<UserSession>())
         when (val result = authRequest.invoke()) {
             is Result.Success -> {
                 saveSession(result.data)
-                emit(Resource.Success(getSession(Unit)))
+                emit(Resource.Success(getSession.invoke()))
             }
-            is Result.Error -> emit(Resource.Error(result.message))
+            is Result.Error -> emit(Resource.Error<UserSession>(result.message))
         }
     }.flowOn(Dispatchers.IO)
 
