@@ -5,9 +5,12 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.local.SharePreferencesAccess
+import com.canhtv.ee.firebasechatapp.data.remote.FirebaseDatabaseServices
 import com.canhtv.ee.firebasechatapp.data.remote.FirebaseUserManager
+import com.canhtv.ee.firebasechatapp.data.repositories.HomeRepository
 import com.canhtv.ee.firebasechatapp.data.repositories.SessionManager
 import com.canhtv.ee.firebasechatapp.utils.SessionKeys
+import com.canhtv.ee.firebasechatapp.viewmodels.ContactViewModel
 import com.canhtv.ee.firebasechatapp.viewmodels.SessionViewModel
 import dagger.Module
 import dagger.Provides
@@ -30,7 +33,11 @@ object MainModule {
     = SessionManager(sessionKeys, sharePreferencesAccess, firebaseUserManager,)
 
     @Provides
-    fun provideSessionViewModel(sessionManager: SessionManager
-    ) = SessionViewModel(sessionManager)
+    fun provideSessionViewModel(sessionManager: SessionManager) = SessionViewModel(sessionManager)
 
+    @Provides
+    fun provideHomeRepository(firebaseDatabaseServices: FirebaseDatabaseServices) = HomeRepository(firebaseDatabaseServices)
+
+    @Provides
+    fun provideContactViewModel(homeRepository: HomeRepository) = ContactViewModel(homeRepository)
 }

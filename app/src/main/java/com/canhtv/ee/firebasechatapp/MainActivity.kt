@@ -29,17 +29,17 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         // On check user session
-//        val mainNav = Navigation.findNavController(binding.navHostFragmentContainer)
-//        when (sharePreferencesAccess.getSession().sessionState) {
-//            sessionKeys.STATE_SIGN_IN -> mainNav.navigate(R.id.action_global_homeFragment)
-//            sessionKeys.STATE_SIGN_OUT -> {
-//                mainNav.popBackStack()
-//                mainNav.navigate(R.id.action_global_loginFragment)
-//            }
-//            else -> {
-//                mainNav.popBackStack()
-//                mainNav.navigate(R.id.action_global_registerFragment)
-//            }
-//        }
+        val mainNav = Navigation.findNavController(binding.navHostFragmentContainer)
+        when (sharePreferencesAccess.getSession().sessionState) {
+            sessionKeys.STATE_SIGN_IN -> mainNav.navigate(R.id.action_global_homeFragment)
+            sessionKeys.STATE_SIGN_OUT -> {
+                mainNav.popBackStack()
+                mainNav.navigate(R.id.action_global_loginFragment)
+            }
+            else -> {
+                mainNav.popBackStack()
+                mainNav.navigate(R.id.action_global_registerFragment)
+            }
+        }
     }
 }

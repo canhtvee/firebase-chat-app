@@ -16,12 +16,13 @@ class FirebaseUserManager @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val databaseReference: DatabaseReference,
 ) : BaseFirebaseServices() {
+
     private val firebaseKeys = FirebaseKeys()
 
-    suspend fun registerNewUser(userCredential: UserCredential, userProfile: UserProfile,): Result<UserSession> {
+    suspend fun registerNewUser(userCredential: UserCredential, username: String,): Result<UserSession> {
         return when (val authResult = getTaskResult { firebaseAuth.createUserWithEmailAndPassword(userCredential.email!!, userCredential.password!!) }) {
             is Result.Success -> {
-                when (val writeResult = writeUser(firebaseAuth.currentUser!!, userProfile)) {
+                when (val writeResult = writeUser(firebaseAuth.currentUser!!, username)) {
                     is Result.Success -> Result.Success(UserSession(sessionKeys.STATE_SIGN_IN, userCredential))
                     is Result.Error -> Result.Error(writeResult.message)
                 }
@@ -48,10 +49,10 @@ class FirebaseUserManager @Inject constructor(
     = getTaskResult { databaseReference.child(firebaseKeys.DB_CHILD_USER).child(firebaseUser.uid).
     setValue(HashMap<String, Any>().put(firebaseKeys.USER_IS_ONLINE, status)) }
 
-    private suspend fun writeUser(firebaseUser: FirebaseUser, userProfile: UserProfile): Result<String> {
+    private suspend fun writeUser(firebaseUser: FirebaseUser, username: String): Result<String> {
         val hashMap = HashMap<String, Any>()
         with(hashMap) {
-            put(firebaseKeys.USER_NAME, userProfile.username!!)
+            put(firebaseKeys.USER_NAME, username)
             put(firebaseKeys.USER_AVATAR_URL, "default")
             put(firebaseKeys.USER_EMAIL, firebaseUser.email!!)
             put(firebaseKeys.USER_IS_ONLINE, "online")

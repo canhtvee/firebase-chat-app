@@ -2,6 +2,7 @@ package com.canhtv.ee.firebasechatapp.data.remote
 
 import android.util.Log
 import com.canhtv.ee.firebasechatapp.data.models.Message
+import com.canhtv.ee.firebasechatapp.data.models.UserProfile
 import com.canhtv.ee.firebasechatapp.utils.Resource
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -17,22 +18,7 @@ import javax.inject.Inject
 
 class FirebaseDatabaseServices @Inject constructor(
     private val firebaseDatabaseReference: DatabaseReference
-) {
-    suspend fun writeUser(user: FirebaseUser) {
-        val hashMap = HashMap<String, String>()
-        with(hashMap) {
-            put("email", user.email!!)
-        }
-        with(firebaseDatabaseReference.child("users").child(user.uid).setValue(hashMap)) {
-            await()
-            addOnSuccessListener {
-                Log.d("FirebaseDatabaseService", "writeUser successfully" )
-            }
-            addOnFailureListener {
-                Log.d("FirebaseDatabaseService", "writeUser failed" )
-            }
-        }
-    }
+): BaseFirebaseServices() {
 
     suspend fun writeMessage(message: Message) {
         with(firebaseDatabaseReference.child("messages").push().setValue(message)){
@@ -97,5 +83,30 @@ class FirebaseDatabaseServices @Inject constructor(
         awaitClose { firebaseDatabaseReference.child("conversations").child(conversationId).removeEventListener(listener) }
 
     }
+
+    @ExperimentalCoroutinesApi
+    fun retrieveUserFlow(): Flow<Resource<ArrayList<UserProfile>>> = callbackFlow {
+        val data = ArrayList<UserProfile>()
+        val listener = object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                snapshot.children.forEach { snapshot1 ->
+                    data.clear()
+                    val element = snapshot1.getValue<UserProfile>()
+                    element!!.uid = snapshot1.key
+                    data.add(element)
+                    trySendBlocking(Resource.Success(data))
+                        .onFailure { close(it) }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                trySend(Resource.Error(error.message))
+                this@callbackFlow.close(error.toException())
+            }
+        }
+        firebaseDatabaseReference.child("users").addValueEventListener(listener)
+        awaitClose { firebaseDatabaseReference.child("users").removeEventListener(listener) }
+    }
+
 
 }

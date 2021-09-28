@@ -1,5 +1,6 @@
 package com.canhtv.ee.firebasechatapp.di
 
+import com.canhtv.ee.firebasechatapp.data.remote.FirebaseDatabaseServices
 import com.canhtv.ee.firebasechatapp.data.remote.FirebaseUserManager
 import com.canhtv.ee.firebasechatapp.utils.SessionKeys
 import com.google.firebase.auth.FirebaseAuth
@@ -30,6 +31,8 @@ object NetModule {
         sessionKeys: SessionKeys,
         firebaseAuth: FirebaseAuth,
         databaseReference: DatabaseReference,
-    )
-    = FirebaseUserManager(sessionKeys,firebaseAuth, databaseReference)
+    ) = FirebaseUserManager(sessionKeys,firebaseAuth, databaseReference)
+
+    @Provides
+    fun provideFirebaseDatabaseServices(firebaseDatabaseReference: DatabaseReference) = FirebaseDatabaseServices(firebaseDatabaseReference)
 }

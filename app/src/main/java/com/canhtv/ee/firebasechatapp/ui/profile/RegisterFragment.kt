@@ -56,9 +56,9 @@ class RegisterFragment : Fragment() {
                     lifecycleScope.launch {
                         binding.registerLayout.visibility = View.GONE
                         binding.registerLayoutSuccessful.visibility = View.VISIBLE
-                        delay(500)
+                        delay(1000)
                         Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container)
-                            .navigate(R.id.action_global_loginFragment)
+                            .navigate(R.id.action_global_homeFragment)
                     }
                 }
                 is Resource.Loading -> {
@@ -74,10 +74,8 @@ class RegisterFragment : Fragment() {
             if (TextUtils.isEmpty(username.text) or TextUtils.isEmpty(email.text) or (TextUtils.isEmpty(password.text)) or (password.text.toString() != confirmPassword.text.toString())) {
                 Toast.makeText(context, "Check Credential", Toast.LENGTH_SHORT).show()
             }else {
-                val userProfile = UserProfile(username.text.toString().trim(), null, null, null)
                 val userCredential = UserCredential(email.text.toString().trim(), password.text.toString().trim())
-                sessionViewModel.applyRegisterSession(userCredential, userProfile)
-
+                sessionViewModel.applyRegisterSession(userCredential, username.text.toString().trim())
             }
         }
     }

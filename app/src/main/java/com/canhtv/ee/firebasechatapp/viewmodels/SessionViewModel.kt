@@ -25,9 +25,9 @@ class SessionViewModel @Inject constructor(
         }
     }
 
-    fun applyRegisterSession(userCredential: UserCredential, userProfile: UserProfile) {
+    fun applyRegisterSession(userCredential: UserCredential, username: String) {
         viewModelScope.launch {
-            sessionManager.applyRegisterSession(userCredential, userProfile).collect {
+            sessionManager.applyRegisterSession(userCredential, username).collect {
                 _session.value = it
             }
         }

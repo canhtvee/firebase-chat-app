@@ -20,9 +20,9 @@ class SessionManager @Inject constructor(
     private val firebaseUserManager: FirebaseUserManager
 ) : BaseSessionManager() {
 
-    suspend fun applyRegisterSession(userCredential: UserCredential, userProfile: UserProfile,)
+    suspend fun applyRegisterSession(userCredential: UserCredential, username: String,)
     = applySession(
-        { firebaseUserManager.registerNewUser(userCredential, userProfile) },
+        { firebaseUserManager.registerNewUser(userCredential, username) },
         { sharePreferencesAccess.putSession(it) },
         { sharePreferencesAccess.getSession() },
     )

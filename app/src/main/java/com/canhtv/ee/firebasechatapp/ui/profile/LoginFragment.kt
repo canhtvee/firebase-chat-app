@@ -46,8 +46,8 @@ class LoginFragment : Fragment() {
         sessionViewModel.session.observe(viewLifecycleOwner) { resources ->
             when (resources) {
                 is Resource.Success -> {
-                    Toast.makeText(context, resources.data.toString(), Toast.LENGTH_LONG).show()
-                }
+                    Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_container)
+                        .navigate(R.id.action_global_homeFragment)                }
                 is Resource.Loading -> {
                     Toast.makeText(context, "Loading", Toast.LENGTH_LONG).show()
 
