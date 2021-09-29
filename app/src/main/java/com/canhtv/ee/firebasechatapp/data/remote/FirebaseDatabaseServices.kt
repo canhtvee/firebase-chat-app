@@ -4,7 +4,6 @@ import android.util.Log
 import com.canhtv.ee.firebasechatapp.data.models.Message
 import com.canhtv.ee.firebasechatapp.data.models.UserProfile
 import com.canhtv.ee.firebasechatapp.utils.Resource
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -92,6 +91,7 @@ class FirebaseDatabaseServices @Inject constructor(
                 data.clear()
                 snapshot.children.forEach { snapshot1 ->
                     val element = snapshot1.getValue<UserProfile>()
+                    Log.d("FBbServices","retrieveUserFLow: ${element!!.email_test}")
                     element!!.uid = snapshot1.key
                     data.add(element)
                 }

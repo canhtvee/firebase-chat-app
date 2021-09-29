@@ -7,22 +7,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.adapters.ContactRecyclerViewAdapter
-import com.canhtv.ee.firebasechatapp.data.models.UserData
 import com.canhtv.ee.firebasechatapp.databinding.FragmentContactBinding
-import com.canhtv.ee.firebasechatapp.databinding.FragmentConversationBinding
 import com.canhtv.ee.firebasechatapp.utils.Resource
 import com.canhtv.ee.firebasechatapp.viewmodels.ContactViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -57,7 +50,8 @@ class ContactFragment : Fragment() {
                     recyclerView.apply {
                         layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
                             .apply { initialPrefetchItemCount = 6 }
-                        adapter = ContactRecyclerViewAdapter(resources.data){ mainNavController.navigate(R.id.action_global_chatFragment) }
+                        adapter = ContactRecyclerViewAdapter(resources.data, context,
+                        ) { mainNavController.navigate(R.id.action_global_chatFragment) }
                         hasFixedSize()
                         addItemDecoration(itemDivider)
                     }

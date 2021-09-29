@@ -11,4 +11,6 @@
     <color name="trial">#CCC6D5</color>
     <color name="ic_launcher_background">#5c5cdc</color>
     <color name="background_transparent">#60272727</color>
+    <color name="active_status">#4CAF50</color>
+
 </resources>

@@ -1,17 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
     android:orientation="horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/contact_avatar_image_view"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="60dp"
-        android:layout_height="60dp"
-        style="@style/Theme.AvatarImageView"/>
+        android:layout_height="60dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/contact_avatar_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:shapeAppearanceOverlay="@style/Theme.AvatarImageView"/>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/contact_is_online_image_view"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/contact_avatar_image_view"
+            android:src="@drawable/ic_is_online"
+            android:visibility="gone"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/contact_toolbar"
