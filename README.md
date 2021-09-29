@@ -1,3 +1,3 @@
 # firebase-chat-app
-apply clean architecture for firebase chat app
-using coroutine for firebase services
+Apply clean architecture for firebase chat app<br/>
+Using coroutine for firebase services<br/>
