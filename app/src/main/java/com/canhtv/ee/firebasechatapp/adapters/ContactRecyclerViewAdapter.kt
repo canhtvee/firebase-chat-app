@@ -56,11 +56,6 @@ class  ContactRecyclerViewAdapter(
             viewHolder.binding.contactIsOnlineImageView.visibility = View.VISIBLE
             Log.d("ContactAdapter", data[position].isOnline.toString())
         }
-        Log.d("UserProfile", "uid: ${data[position].uid.toString()}")
-        Log.d("UserProfile", "username: " + data[position].username.toString())
-        Log.d("UserProfile", "avatarUrl :" + data[position].avatarUrl.toString())
-        Log.d("UserProfile", "email: " + data[position].email_test.toString())
-        Log.d("UserProfile", "isOnline: " + data[position].isOnline.toString())
 
         viewHolder.binding.contactIsOnlineImageView.visibility = View.VISIBLE
     }

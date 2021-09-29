@@ -90,9 +90,9 @@ class FirebaseDatabaseServices @Inject constructor(
             override fun onDataChange(snapshot: DataSnapshot) {
                 data.clear()
                 snapshot.children.forEach { snapshot1 ->
-                    val element = snapshot1.getValue<UserProfile>()
-                    Log.d("FBbServices","retrieveUserFLow: ${element!!.email_test}")
-                    element!!.uid = snapshot1.key
+                    val element = snapshot1.getValue(UserProfile::class.java)
+                    Log.d("retrieveUserFLow","isOnline: ${element!!.isOnline}")
+//                    element!!.uid = snapshot1.key
                     data.add(element)
                 }
                 trySend(Resource.Success(data))
