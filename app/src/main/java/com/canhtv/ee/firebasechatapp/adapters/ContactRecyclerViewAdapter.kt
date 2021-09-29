@@ -6,13 +6,14 @@ import androidx.compose.ui.layout.Layout
 import androidx.recyclerview.widget.RecyclerView
 import com.canhtv.ee.firebasechatapp.R
 import com.canhtv.ee.firebasechatapp.data.models.UserData
+import com.canhtv.ee.firebasechatapp.data.models.UserProfile
 import com.canhtv.ee.firebasechatapp.databinding.ContactItemViewBinding
 import com.canhtv.ee.firebasechatapp.databinding.ConversationItemViewBinding
 import com.google.android.material.appbar.MaterialToolbar
 
 class  ContactRecyclerViewAdapter(
-    private val data: MutableList<UserData>,
-    val onItemClickHandler: (UserData) -> Unit,
+    private val data: ArrayList<UserProfile>,
+    val onItemClickHandler: (UserProfile) -> Unit,
 ) : RecyclerView.Adapter<ContactRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: ContactItemViewBinding, onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(binding.root) {

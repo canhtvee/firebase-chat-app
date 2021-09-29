@@ -85,18 +85,18 @@ class FirebaseDatabaseServices @Inject constructor(
     }
 
     @ExperimentalCoroutinesApi
-    fun retrieveUserFlow(): Flow<Resource<ArrayList<UserProfile>>> = callbackFlow {
+    fun retrieveUserFlow() = callbackFlow {
         val data = ArrayList<UserProfile>()
         val listener = object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+                data.clear()
                 snapshot.children.forEach { snapshot1 ->
-                    data.clear()
                     val element = snapshot1.getValue<UserProfile>()
                     element!!.uid = snapshot1.key
                     data.add(element)
-                    trySendBlocking(Resource.Success(data))
-                        .onFailure { close(it) }
                 }
+                trySend(Resource.Success(data))
+                    .onFailure { close(it) }
             }
 
             override fun onCancelled(error: DatabaseError) {

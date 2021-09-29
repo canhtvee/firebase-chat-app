@@ -15,14 +15,13 @@ class ContactViewModel @Inject constructor(
     private val homeRepository: HomeRepository
 ) : ViewModel() {
     private var _contacts = MutableLiveData<Resource<ArrayList<UserProfile>>>()
-    val contact: LiveData<Resource<ArrayList<UserProfile>>> = _contacts
+    val contacts: LiveData<Resource<ArrayList<UserProfile>>> = _contacts
 
-    fun getContacts() {
+    init {
         viewModelScope.launch {
             homeRepository.getContacts().collect {
                 _contacts.value = it
             }
         }
     }
-
 }
