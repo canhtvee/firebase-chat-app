@@ -4,6 +4,8 @@ import android.util.Log
 import com.canhtv.ee.firebasechatapp.data.models.Message
 import com.canhtv.ee.firebasechatapp.data.models.UserProfile
 import com.canhtv.ee.firebasechatapp.utils.Resource
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.getValue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -16,7 +18,8 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 class FirebaseDatabaseServices @Inject constructor(
-    private val firebaseDatabaseReference: DatabaseReference
+    private val firebaseAuth: FirebaseAuth,
+    private val firebaseDatabaseReference: DatabaseReference,
 ): BaseFirebaseServices() {
 
     suspend fun writeMessage(message: Message) {
@@ -90,11 +93,13 @@ class FirebaseDatabaseServices @Inject constructor(
             override fun onDataChange(snapshot: DataSnapshot) {
                 data.clear()
                 snapshot.children.forEach { snapshot1 ->
-                    val element = snapshot1.getValue(UserProfile::class.java)
-                    Log.d("retrieveUserFLow","isOnline: ${element!!.isOnline}")
-//                    element!!.uid = snapshot1.key
-                    data.add(element)
+                    if (!snapshot1.key.equals(firebaseAuth.currentUser!!.uid)) {
+                        val element = snapshot1.getValue(UserProfile::class.java)
+                        element!!.uid = snapshot1.key
+                        data.add(element)
+                    }
                 }
+                data.sortBy { it.username }
                 trySend(Resource.Success(data))
                     .onFailure { close(it) }
             }

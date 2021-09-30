@@ -52,12 +52,9 @@ class  ContactRecyclerViewAdapter(
         if (data[position].avatarUrl.equals("default")) {
             viewHolder.binding.contactAvatarImageView.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.ic_person))
         }
-        if (data[position].isOnline.equals("online")) {
+        if (data[position].onlineStatus.equals("online")) {
             viewHolder.binding.contactIsOnlineImageView.visibility = View.VISIBLE
-            Log.d("ContactAdapter", data[position].isOnline.toString())
         }
-
-        viewHolder.binding.contactIsOnlineImageView.visibility = View.VISIBLE
     }
 
     override fun getItemCount() = data.size

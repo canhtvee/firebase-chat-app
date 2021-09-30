@@ -5,22 +5,20 @@ class UserProfile {
     var username       : String? = null
     var avatarUrl      : String? = null
     var email          : String? = null
-
-    var isOnline       : String? = null
-
-//    var uid            : String? = null
+    var onlineStatus       : String? = null
+    var uid            : String? = null
     constructor() {}
     constructor(
         email          : String?  ,
         username       : String?  ,
         avatarUrl      : String?  ,
-        isOnline       : String?
+        onlineStatus   : String?
 
     ){
         this.username  = username
-        this.avatarUrl = avatarUrl
-        this.email     = email
-        this.isOnline  = isOnline
+        this.avatarUrl    = avatarUrl
+        this.email        = email
+        this.onlineStatus = onlineStatus
     }
 
 }

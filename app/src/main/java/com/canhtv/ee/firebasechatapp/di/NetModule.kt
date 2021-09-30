@@ -34,5 +34,7 @@ object NetModule {
     ) = FirebaseUserManager(sessionKeys,firebaseAuth, databaseReference)
 
     @Provides
-    fun provideFirebaseDatabaseServices(firebaseDatabaseReference: DatabaseReference) = FirebaseDatabaseServices(firebaseDatabaseReference)
+    fun provideFirebaseDatabaseServices(
+        firebaseAuth: FirebaseAuth,
+        firebaseDatabaseReference: DatabaseReference) = FirebaseDatabaseServices(firebaseAuth, firebaseDatabaseReference)
 }

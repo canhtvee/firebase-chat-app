@@ -1,7 +1,6 @@
 package com.canhtv.ee.firebasechatapp.data.remote
 
 import com.canhtv.ee.firebasechatapp.data.models.UserCredential
-import com.canhtv.ee.firebasechatapp.data.models.UserProfile
 import com.canhtv.ee.firebasechatapp.data.models.UserSession
 import com.canhtv.ee.firebasechatapp.utils.Result
 import com.canhtv.ee.firebasechatapp.utils.SessionKeys
@@ -47,7 +46,7 @@ class FirebaseUserManager @Inject constructor(
 
     suspend fun setOnlineStatus(firebaseUser: FirebaseUser, status: String)
     = getTaskResult { databaseReference.child(firebaseKeys.DB_CHILD_USER).child(firebaseUser.uid).
-    setValue(HashMap<String, Any>().put(firebaseKeys.USER_IS_ONLINE, status)) }
+    setValue(HashMap<String, Any>().put(firebaseKeys.USER_ONLINE_STATUS, status)) }
 
     private suspend fun writeUser(firebaseUser: FirebaseUser, username: String): Result<String> {
         val hashMap = HashMap<String, Any>()
@@ -55,7 +54,7 @@ class FirebaseUserManager @Inject constructor(
             put(firebaseKeys.USER_NAME, username)
             put(firebaseKeys.USER_AVATAR_URL, "default")
             put(firebaseKeys.USER_EMAIL, firebaseUser.email!!)
-            put(firebaseKeys.USER_IS_ONLINE, "online")
+            put(firebaseKeys.USER_ONLINE_STATUS, "online")
         }
         return getTaskResult { databaseReference.child(firebaseKeys.DB_CHILD_USER).child(firebaseUser.uid).setValue(hashMap) }
     }
